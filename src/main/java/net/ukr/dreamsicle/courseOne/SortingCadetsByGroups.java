@@ -1,7 +1,7 @@
 package net.ukr.dreamsicle.courseOne;
 
 import net.ukr.dreamsicle.logger.Logger;
-import net.ukr.dreamsicle.read_write_copy_file.WriteExcelFile;
+import net.ukr.dreamsicle.read_write_copy_file.WriteFile;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -15,28 +15,28 @@ import java.util.Iterator;
 
 public class SortingCadetsByGroups {
 
-    public SortingCadetsByGroups(String file, int numberCell) {
-        readFromExcelSortedCadetsWriteToExcel(file, numberCell);
+    public SortingCadetsByGroups(String file) {
+        readFromExcelSortedCadetsWriteToExcel(file);
     }
 
     @Test
     public static void main(String[] args) {
         long start = new Date().getTime();
         System.out.println("go ->");
-        new SortingCadetsByGroups("C:\\Training_division_tools\\2018_год_поступления\\1_курс\\commonTable.xlsx", 0);
+        new SortingCadetsByGroups("C:\\Training_division_tools\\2018_год_поступления\\1_курс\\commonTable.xlsx");
         long end = new Date().getTime();
         System.out.println();
         long l = (end - start) / 1000;
         System.out.println(l + " сек");
     }
 
-    private synchronized void readFromExcelSortedCadetsWriteToExcel(String file, int numberCell) {
+    private synchronized void readFromExcelSortedCadetsWriteToExcel(String file) {
         try {
             FileInputStream inputStream = new FileInputStream(new File(file));
             //инициализация листа для доступа к файлу
             XSSFWorkbook workbook = new XSSFWorkbook(inputStream);
             //инициализация листа под номером
-            XSSFSheet sheet = workbook.getSheetAt(numberCell);
+            XSSFSheet sheet = workbook.getSheetAt(0);
             //проходимся по всем строкам
             Iterator<Row> rowIterator = sheet.iterator();
 
@@ -54,7 +54,7 @@ public class SortingCadetsByGroups {
                 }
             }
         } catch (Exception e) {
-            Logger.log(e.toString());
+            Logger.log(e, "Не возможно произвести сортировку");
         }
     }
 
@@ -161,10 +161,10 @@ public class SortingCadetsByGroups {
 
     private void readAndWriteData(Iterator<Cell> cellIterator, Cell cell, StringBuilder builder, String pathFile) {
         builder.append(cell + "\t\t");
-        for (int j = 0; j < 4; j++) {
+        for (int j = 0; j < 3; j++) {
             Cell cells = cellIterator.next();
             builder.append(cells.getStringCellValue()).append("\t\t");
         }
-        new WriteExcelFile(pathFile, builder.toString());
+        new WriteFile(pathFile, builder.toString());
     }
 }

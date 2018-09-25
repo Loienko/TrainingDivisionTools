@@ -12,8 +12,8 @@ import static net.ukr.dreamsicle.Window.*;
 public class JFrame {
 
     public static Toolkit toolkit = Toolkit.getDefaultToolkit();
-    static int WIDTH_WINDOW = 800;
-    static int HEIGHT_WINDOW = 600;
+    public static int WIDTH_WINDOW = 800;
+    public static int HEIGHT_WINDOW = 600;
 
     public static javax.swing.JFrame getJFrame() {
         javax.swing.JFrame jFrame = new javax.swing.JFrame();

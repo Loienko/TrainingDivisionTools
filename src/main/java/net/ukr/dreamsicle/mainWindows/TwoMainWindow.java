@@ -1,6 +1,7 @@
 package net.ukr.dreamsicle.mainWindows;
 
-import resourses.ResourceLoader;
+import net.ukr.dreamsicle.ResourceLoader;
+import net.ukr.dreamsicle.dataBase.UpdateDBCommonTable;
 
 import javax.swing.*;
 import java.awt.*;
@@ -19,7 +20,7 @@ public class TwoMainWindow {
         getCommonTable();
         getBack();
         getScheduleSession();
-        getTest();
+//        getTest();
         getRating();
         getAddInfo();
         getLabel();
@@ -28,7 +29,7 @@ public class TwoMainWindow {
 
     public static void getBack() {
         JButton back = new JButton("Назад");
-        back.setIcon(new ImageIcon(ResourceLoader.getImage("image/undo.png")));
+        back.setIcon(new ImageIcon(ResourceLoader.getImage("/image/undo.png")));
         back.addActionListener(e -> {
             jPanelMainWindow.setVisible(true);
             jPanelTwoWindow.setVisible(false);
@@ -43,7 +44,7 @@ public class TwoMainWindow {
 
     private static void getLabel() {
         jLabel = new JLabel();
-        jLabel.setIcon(new ImageIcon(ResourceLoader.getImage("image/about.png")));
+        jLabel.setIcon(new ImageIcon(ResourceLoader.getImage("/image/about.png")));
         jLabel.setFont(new Font("Arial", Font.BOLD, 30));
 
         jPanelTwoWindow.add(jLabel, new GridBagConstraints(0, 0, 4, 1, 0.0, 0.9,
@@ -53,8 +54,9 @@ public class TwoMainWindow {
 
     private static void getCommonTable() {
         JButton commonTable = new JButton("Общая таблица");
-        commonTable.setIcon(new ImageIcon(ResourceLoader.getImage("image/forButton/commonTable.png")));
+        commonTable.setIcon(new ImageIcon(ResourceLoader.getImage("/image/forButton/infoAboutCadets.png")));
         commonTable.addActionListener(e -> openLocalFile("C://Training_division_tools//2018_год_поступления//1_курс//commonTable.xlsx"));
+        new UpdateDBCommonTable();
 
         jPanelTwoWindow.add(commonTable, new GridBagConstraints(4, 2, 4, 1, 0.0, 0.9,
                 GridBagConstraints.CENTER, GridBagConstraints.HORIZONTAL, new Insets(30, 2, 2, 2),
@@ -64,7 +66,7 @@ public class TwoMainWindow {
     private static void getScheduleSession() {
         JButton scheduleSession = new JButton("Ведомость сессия");
         scheduleSession.setEnabled(false);
-        scheduleSession.setIcon(new ImageIcon(ResourceLoader.getImage("image/forButton/scheduleSession.png")));
+        scheduleSession.setIcon(new ImageIcon(ResourceLoader.getImage("/image/forButton/scheduleSession.png")));
 
         scheduleSession.addActionListener(e -> openLocalFile("C://Training_division_tools//2018_год_поступления//1_курс//statement.xlsx"));
 
@@ -104,7 +106,7 @@ public class TwoMainWindow {
 
     private static void getGroup() {
         JToggleButton group = new JToggleButton("Список групп");
-        group.setIcon(new ImageIcon(ResourceLoader.getImage("image/forButton/info.png")));
+        group.setIcon(new ImageIcon(ResourceLoader.getImage("/image/forButton/info.png")));
         group.addActionListener(e -> {
             if (group.isSelected()) {
                 jPanelMainWindow.setVisible(false);
@@ -124,7 +126,7 @@ public class TwoMainWindow {
     private static void getRating() {
         JButton rating = new JButton("Рейтинг курсантов");
         rating.setEnabled(false);
-        rating.setIcon(new ImageIcon(ResourceLoader.getImage("image/forButton/raiting.png")));
+        rating.setIcon(new ImageIcon(ResourceLoader.getImage("/image/forButton/raiting.png")));
 
         rating.addActionListener(e -> openLocalFile("C://Training_division_tools//2018_год_поступления//1_курс//rating.xlsx"));
 
@@ -135,7 +137,7 @@ public class TwoMainWindow {
 
     private static void getAddInfo() {
         JToggleButton addInfo = new JToggleButton("Дополнительная информация");
-        addInfo.setIcon(new ImageIcon(ResourceLoader.getImage("image/forButton/about.png")));
+        addInfo.setIcon(new ImageIcon(ResourceLoader.getImage("/image/forButton/about.png")));
         addInfo.addActionListener(e -> {
             if (addInfo.isSelected()) {
                 jPanelMainWindow.setVisible(false);

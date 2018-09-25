@@ -1,5 +1,6 @@
 package net.ukr.dreamsicle.read_write_copy_file;
 
+import net.ukr.dreamsicle.logger.Logger;
 import org.junit.Test;
 
 import java.io.BufferedWriter;
@@ -7,15 +8,15 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
-public class WriteExcelFile {
+public class WriteFile {
 
-    public WriteExcelFile(String filePath, String text) {
+    public WriteFile(String filePath, String text) {
         writeToFile(filePath, text);
     }
 
     @Test
     public static void main(String[] args) {
-        new WriteExcelFile("D:\\test\\BufferedWriter.txt", "OK");
+        new WriteFile("D:\\test\\BufferedWriter.txt", "OK");
         System.out.println("0 OK");
 
     }
@@ -31,7 +32,7 @@ public class WriteExcelFile {
             //теперь мы можем использовать метод write или метод append
             br.write(text);
         } catch (IOException e) {
-            e.printStackTrace();
+            Logger.log(e, "Не возмножно записать данные в файл");
         }
     }
 }

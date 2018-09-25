@@ -1,4 +1,4 @@
-package resourses;
+package net.ukr.dreamsicle;
 
 import java.awt.*;
 import java.io.File;
@@ -15,7 +15,6 @@ public class ResourceLoader {
         URL resource = rl.getClass().getResource(pathFileAndFileName);
         File file = new File(resource.getPath());
         String s = file.toString();
-//        System.out.println(s);
         return s;
     }
 }

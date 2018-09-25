@@ -22,10 +22,10 @@ public class CopyFile {
                     outputStream.flush();
                 }
             } catch (IOException e) {
-                Logger.log(e.toString());
+                Logger.log(e, "Файл для чтения не может быть открыт");
             }
         } catch (IOException e) {
-            Logger.log(e.toString());
+            Logger.log(e, "Файл для чтения не может быть открыт");
         }
     }
 }

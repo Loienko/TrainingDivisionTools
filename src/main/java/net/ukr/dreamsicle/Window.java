@@ -45,6 +45,7 @@ public class Window {
 
 
         jPanelMainWindow.revalidate();
+
         jPanelTwoWindow.revalidate();
         jPanelThreeWindow.revalidate();
         jPanelFourWindow.revalidate();

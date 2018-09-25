@@ -1,10 +1,9 @@
 package net.ukr.dreamsicle.mainWindows;
 
+import net.ukr.dreamsicle.ResourceLoader;
 import net.ukr.dreamsicle.courseOne.*;
 import net.ukr.dreamsicle.read_write_copy_file.ExistsFile;
-import net.ukr.dreamsicle.courseOne.SortingCadetsByGroups;
 import net.ukr.dreamsicle.removeFiles.RemoveAllFilesInFolder;
-import resourses.ResourceLoader;
 
 import javax.swing.*;
 import java.awt.*;
@@ -14,6 +13,7 @@ import static net.ukr.dreamsicle.Window.*;
 public class FourMainWindowListCadetsGroup {
 
     static ExistsFile existsFile = new ExistsFile();
+
     public static void getFourMainListWindow() {
         jPanelFourWindow.setLayout(new GridBagLayout());
 
@@ -54,7 +54,7 @@ public class FourMainWindowListCadetsGroup {
 
     public static void getBackTwoWindows() {
         JButton back = new JButton("Назад");
-        back.setIcon(new ImageIcon(ResourceLoader.getImage("image/undo.png")));
+        back.setIcon(new ImageIcon(ResourceLoader.getImage("/image/undo.png")));
 
         back.addActionListener(e -> {
             jPanelMainWindow.setVisible(false);
@@ -73,11 +73,11 @@ public class FourMainWindowListCadetsGroup {
 
     public static void getUpdateList() {
         JToggleButton update = new JToggleButton("Обновить списки");
-        update.setIcon(new ImageIcon(ResourceLoader.getImage("image/forButton/update.png")));
+        update.setIcon(new ImageIcon(ResourceLoader.getImage("/image/forButton/update.png")));
 
         update.addActionListener(e -> {
             new RemoveAllFilesInFolder("C:\\Training_division_tools\\2018_год_поступления\\list_cadets\\");
-            new SortingCadetsByGroups("C:\\Training_division_tools\\2018_год_поступления\\1_курс\\commonTable.xlsx", 0);
+            new SortingCadetsByGroups("C:\\Training_division_tools\\2018_год_поступления\\1_курс\\commonTable.xlsx");
 
             update.setSelected(false);
         });

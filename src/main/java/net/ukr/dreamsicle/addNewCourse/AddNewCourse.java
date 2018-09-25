@@ -6,7 +6,7 @@ import net.ukr.dreamsicle.logger.Logger;
 import java.io.File;
 import java.io.IOException;
 
-import static net.ukr.dreamsicle.date.Date.getYearDate;
+import static net.ukr.dreamsicle.date.TimeRightNow.getYearDate;
 import static net.ukr.dreamsicle.read_write_copy_file.CopyFile.getCopyFile;
 
 public class AddNewCourse {
@@ -21,7 +21,7 @@ public class AddNewCourse {
             try {
                 file.createNewFile();
             } catch (IOException e) {
-                Logger.log(e.toString());
+                Logger.log(e,"Не возможно создать файл");
             }
         }
     }
@@ -32,7 +32,7 @@ public class AddNewCourse {
             try {
                 folderYearCadets.mkdir();
             } catch (Exception e) {
-                Logger.log(e.toString());
+                Logger.log(e,"Не возможно создать папку");
             }
         }
     }

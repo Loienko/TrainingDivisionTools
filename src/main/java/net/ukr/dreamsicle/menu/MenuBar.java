@@ -1,6 +1,6 @@
 package net.ukr.dreamsicle.menu;
 
-import resourses.ResourceLoader;
+import net.ukr.dreamsicle.ResourceLoader;
 
 import javax.swing.*;
 import java.awt.*;
@@ -30,18 +30,20 @@ public class MenuBar {
         getToolsMenu(tools);
         getHelpMenu(help);
 
+        jMenuBar.updateUI();
+
         return jMenuBar;
     }
 
     private static void getFileMenu(JMenu file) {
-        file.add(new JMenuItem("New", new ImageIcon(ResourceLoader.getImage("image/new.png")))).addActionListener(e -> {
+        file.add(new JMenuItem("New", new ImageIcon(ResourceLoader.getImage("/image/new.png")))).addActionListener(e -> {
             JFileChooser jFileChooser = new JFileChooser();
             jFileChooser.showDialog(jPanelMainWindow, "New");
             jFileChooser.setCurrentDirectory(new File("."));
             jFileChooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
         });
 
-        JMenuItem open = new JMenuItem("Open", new ImageIcon(ResourceLoader.getImage("image/open.png")));
+        JMenuItem open = new JMenuItem("Open", new ImageIcon(ResourceLoader.getImage("/image/open.png")));
 
         file.add(open);
         open.addActionListener(e -> {
@@ -71,14 +73,14 @@ public class MenuBar {
 
         });
 
-        file.add(new JMenuItem("Save", new ImageIcon(ResourceLoader.getImage("image/save.png")))).addActionListener(e -> {
+        file.add(new JMenuItem("Save", new ImageIcon(ResourceLoader.getImage("/image/save.png")))).addActionListener(e -> {
             JFileChooser jFileChooser = new JFileChooser();
             jFileChooser.showSaveDialog(jPanelMainWindow);
             jFileChooser.setCurrentDirectory(new File("."));
             //jFileChooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
         });
 
-        file.add(new JMenuItem("Save as...", new ImageIcon(ResourceLoader.getImage("image/saveAs.png")))).addActionListener(e -> {
+        file.add(new JMenuItem("Save as...", new ImageIcon(ResourceLoader.getImage("/image/saveAs.png")))).addActionListener(e -> {
             JFileChooser jFileChooser = new JFileChooser();
             jFileChooser.showDialog(jPanelMainWindow, "save as");
             jFileChooser.setCurrentDirectory(new File("."));
@@ -86,7 +88,7 @@ public class MenuBar {
         });
         file.addSeparator();
 
-        JMenuItem print = new JMenuItem("Print", new ImageIcon(ResourceLoader.getImage("image/print.png")));
+        JMenuItem print = new JMenuItem("Print", new ImageIcon(ResourceLoader.getImage("/image/print.png")));
         file.add(print);
        /* print.addActionListener(e -> {
             try {
@@ -103,7 +105,7 @@ public class MenuBar {
             }
         });*/
 
-        JMenuItem exitInFile = new JMenuItem("Exit", new ImageIcon(ResourceLoader.getImage("image/exit.png")));
+        JMenuItem exitInFile = new JMenuItem("Exit", new ImageIcon(ResourceLoader.getImage("/image/exit.png")));
         file.add(exitInFile);
         exitInFile.addActionListener(e -> {
             int response = JOptionPane.showConfirmDialog(jFrame, "Вы уверены???");
@@ -117,30 +119,30 @@ public class MenuBar {
     }
 
     private static void getEditMenu(JMenu edit) {
-        JMenuItem undo = new JMenuItem("Undo", new ImageIcon(ResourceLoader.getImage("image/undo.png")));
+        JMenuItem undo = new JMenuItem("Undo", new ImageIcon(ResourceLoader.getImage("/image/undo.png")));
         undo.setAccelerator(KeyStroke.getKeyStroke("ctrl Z"));
         edit.add(undo);
 
-        JMenuItem redo = new JMenuItem("Redo", new ImageIcon(ResourceLoader.getImage("image/redo.png")));
+        JMenuItem redo = new JMenuItem("Redo", new ImageIcon(ResourceLoader.getImage("/image/redo.png")));
         redo.setAccelerator(KeyStroke.getKeyStroke("ctrl shift Z"));
         edit.add(redo);
         edit.addSeparator();
 
-        JMenuItem cut = new JMenuItem("Cut", new ImageIcon(ResourceLoader.getImage("image/cut.png")));
+        JMenuItem cut = new JMenuItem("Cut", new ImageIcon(ResourceLoader.getImage("/image/cut.png")));
         cut.setAccelerator(KeyStroke.getKeyStroke("ctrl X"));
         cut.addActionListener(e -> {
             //only JTetxField   .cut();
         });
         edit.add(cut);
 
-        JMenuItem copy = new JMenuItem("Copy", new ImageIcon(ResourceLoader.getImage("image/copy.png")));
+        JMenuItem copy = new JMenuItem("Copy", new ImageIcon(ResourceLoader.getImage("/image/copy.png")));
         copy.setAccelerator(KeyStroke.getKeyStroke("ctrl C"));
         copy.addActionListener(e -> {
             //only JTetxField   .copy();
         });
         edit.add(copy);
 
-        JMenuItem paste = new JMenuItem("Paste", new ImageIcon(ResourceLoader.getImage("image/paste.png")));
+        JMenuItem paste = new JMenuItem("Paste", new ImageIcon(ResourceLoader.getImage("/image/paste.png")));
         paste.setAccelerator(KeyStroke.getKeyStroke("ctrl V"));
         paste.addActionListener(e -> {
             //only JTetxField   .paste();
@@ -149,17 +151,17 @@ public class MenuBar {
 
 
         JMenu optionInEdit = new JMenu("Options");
-        optionInEdit.setIcon(new ImageIcon(ResourceLoader.getImage("image/options.png")));
+        optionInEdit.setIcon(new ImageIcon(ResourceLoader.getImage("/image/options.png")));
         edit.add(optionInEdit);
-        optionInEdit.add(new JMenuItem("Color", new ImageIcon(ResourceLoader.getImage("image/color.png")))).addActionListener(e -> {
+        optionInEdit.add(new JMenuItem("Color", new ImageIcon(ResourceLoader.getImage("/image/color.png")))).addActionListener(e -> {
             Color color = JColorChooser.showDialog(jPanelMainWindow, "title", Color.BLUE);
             jPanelMainWindow.setBackground(color);
         });
-        optionInEdit.add(new JMenuItem("Size", new ImageIcon(ResourceLoader.getImage("image/size.png"))));
+        optionInEdit.add(new JMenuItem("Size", new ImageIcon(ResourceLoader.getImage("/image/size.png"))));
     }
 
     private static void getToolsMenu(JMenu tools) {
-        tools.add(new JMenuItem("Local History", new ImageIcon(ResourceLoader.getImage("image/history.png"))));
+        tools.add(new JMenuItem("Local History", new ImageIcon(ResourceLoader.getImage("/image/history.png"))));
 
         JMenuItem deployment = new JMenuItem("Deployment", '0');
         deployment.setEnabled(false);
@@ -167,18 +169,18 @@ public class MenuBar {
     }
 
     private static void getHelpMenu(JMenu help) {
-        help.add(new JMenuItem("Find Action", new ImageIcon(ResourceLoader.getImage("image/search.png"))));
-        help.add(new JMenuItem("Help", new ImageIcon(ResourceLoader.getImage("image/help.png"))));
+        help.add(new JMenuItem("Find Action", new ImageIcon(ResourceLoader.getImage("/image/search.png"))));
+        help.add(new JMenuItem("Help", new ImageIcon(ResourceLoader.getImage("/image/help.png"))));
         help.addSeparator();
         ArrayList<Object> list = new ArrayList<>();
-        help.add(new JMenuItem("Support Center", new ImageIcon(ResourceLoader.getImage("image/contact.png"))))
+        help.add(new JMenuItem("Support Center", new ImageIcon(ResourceLoader.getImage("/image/contact.png"))))
                 .addActionListener(e -> list.add(JOptionPane.showInputDialog(null, "Input you message for developer")));
 
-        JMenuItem donate = help.add(new JMenuItem("Donate", new ImageIcon(ResourceLoader.getImage("image/donate.png"))));
+        JMenuItem donate = help.add(new JMenuItem("Donate", new ImageIcon(ResourceLoader.getImage("/image/donate.png"))));
         donate.addActionListener(e -> JOptionPane.showMessageDialog(null, "Sorry, donate not work"));
         donate.setEnabled(true);
         help.addSeparator();
-        help.add(new JMenuItem("About", new ImageIcon(ResourceLoader.getImage("image/about.png"))))
+        help.add(new JMenuItem("About", new ImageIcon(ResourceLoader.getImage("/image/about.png"))))
                 .addActionListener(e -> JOptionPane.showMessageDialog(null, "Ver 1.0"));
     }
 

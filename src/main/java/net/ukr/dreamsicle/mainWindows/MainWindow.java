@@ -1,19 +1,31 @@
 package net.ukr.dreamsicle.mainWindows;
 
+import net.ukr.dreamsicle.ResourceLoader;
 import net.ukr.dreamsicle.addNewCourse.AddNewCourse;
-import resourses.ResourceLoader;
+import net.ukr.dreamsicle.logger.Logger;
 
 import javax.swing.*;
 import java.awt.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 
 import static net.ukr.dreamsicle.Window.*;
-import static net.ukr.dreamsicle.date.Date.getMonthDate;
+import static net.ukr.dreamsicle.date.TimeRightNow.getMonthDate;
 import static net.ukr.dreamsicle.mainWindows.TwoMainWindow.jLabel;
 
+/**
+ * update class in constructor
+ */
+
 public class MainWindow {
+
+    public MainWindow() {
+        getMainWindow();
+    }
 
     public static void getMainWindow() {
 
@@ -26,21 +38,53 @@ public class MainWindow {
         getFourthCourse();
         getFifthCourse();
         getArchive();
+        getConnectDB();
 
+    }
+
+    private static void getConnectDB() {
+        JToggleButton dataBase = new JToggleButton("Подключится к БД");
+        dataBase.setIcon(new ImageIcon(ResourceLoader.getImage("/image/forButton/soldier.png")));
+
+        final String URL = "jdbc:mysql://localhost:3306/cadets?useSSL=false";
+        final String USERNAME = "root";
+        final String PASSWORD = "dream";
+
+
+        dataBase.addActionListener(e -> {
+            try (Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD)) {
+
+                Class.forName("com.mysql.jdbc.Driver").newInstance();
+
+                if (!connection.isClosed()) {
+                    JOptionPane.showMessageDialog(null, "Соединение с Базой данных установлено успешно!!!");
+                }
+            } catch (SQLException | ClassNotFoundException | IllegalAccessException | InstantiationException e1) {
+                Logger.log(e1, "No connect to BD");
+                JOptionPane.showMessageDialog(null,"Нет соединения с БД", null,JOptionPane.WARNING_MESSAGE);
+            }
+            dataBase.setSelected(false);
+        });
+
+        jPanelMainWindow.add(dataBase, new GridBagConstraints(5, 7, 4, 1, 0.0, 0.9,
+                GridBagConstraints.CENTER, GridBagConstraints.HORIZONTAL, new Insets(30, 2, 2, 2),
+                0, 0));
     }
 
     private static void getAddNewCourse() {
         JToggleButton addNewCourse = new JToggleButton();
         addNewCourse.setToolTipText("Добавить новый курс в БД");
-        addNewCourse.setIcon(new ImageIcon(ResourceLoader.getImage("image/add.png")));
+        addNewCourse.setIcon(new ImageIcon(ResourceLoader.getImage("/image/add.png")));
 
         addNewCourse.setText("Добавить новый курс");
 
-        //
+        /**
+         * переделать проверку активное кнопки addNewCourse
+         * нужно указать путь к папке и получать ее имя
+         */
         Path path = Paths.get("C://Training_division_tools//2018_год_поступления");
 
-
-        if (getMonthDate() == 9 && !Files.exists(path)) {
+        if (getMonthDate() == 7 && !Files.exists(path)) {
             addNewCourse.setEnabled(true);
             addNewCourse.addActionListener(e -> {
                 if (addNewCourse.isSelected()) {
@@ -57,13 +101,12 @@ public class MainWindow {
         jPanelMainWindow.add(addNewCourse, new GridBagConstraints(4, 1, 4, 1, 0.0, 0.9,
                 GridBagConstraints.CENTER, GridBagConstraints.HORIZONTAL, new Insets(30, 2, 2, 2),
                 0, 0));
-
     }
 
     private static void getFirstCourse() {
         JToggleButton firstCourse = new JToggleButton("1 курс");
         firstCourse.setToolTipText("...");
-        firstCourse.setIcon(new ImageIcon(ResourceLoader.getImage("image/forButton/soldier.png")));
+        firstCourse.setIcon(new ImageIcon(ResourceLoader.getImage("/image/forButton/soldier.png")));
         firstCourse.addActionListener(e -> {
             if (firstCourse.isSelected()) {
                 getActiveWindows(firstCourse);
@@ -77,7 +120,7 @@ public class MainWindow {
 
     private static void getSecondCourse() {
         JToggleButton secondCourse = new JToggleButton("2 курс");
-        secondCourse.setIcon(new ImageIcon(ResourceLoader.getImage("image/forButton/head_cadets.png")));
+        secondCourse.setIcon(new ImageIcon(ResourceLoader.getImage("/image/forButton/head_cadets.png")));
         secondCourse.setEnabled(false);
         secondCourse.addActionListener(e -> {
             if (secondCourse.isSelected()) {
@@ -92,7 +135,7 @@ public class MainWindow {
 
     private static void getThirdCourse() {
         JToggleButton thirdCourse = new JToggleButton("3 курс");
-        thirdCourse.setIcon(new ImageIcon(ResourceLoader.getImage("image/forButton/head_cadets.png")));
+        thirdCourse.setIcon(new ImageIcon(ResourceLoader.getImage("/image/forButton/head_cadets.png")));
         thirdCourse.setEnabled(false);
         thirdCourse.addActionListener(e -> {
             if (thirdCourse.isSelected()) {
@@ -107,7 +150,7 @@ public class MainWindow {
 
     private static void getFourthCourse() {
         JToggleButton fourthCourse = new JToggleButton("4 курс");
-        fourthCourse.setIcon(new ImageIcon(ResourceLoader.getImage("image/forButton/head_cadets.png")));
+        fourthCourse.setIcon(new ImageIcon(ResourceLoader.getImage("/image/forButton/head_cadets.png")));
         fourthCourse.setEnabled(false);
         fourthCourse.addActionListener(e -> {
             if (fourthCourse.isSelected()) {
@@ -122,7 +165,7 @@ public class MainWindow {
 
     private static void getFifthCourse() {
         JToggleButton fifthCourse = new JToggleButton("5 курс");
-        fifthCourse.setIcon(new ImageIcon(ResourceLoader.getImage("image/forButton/5.png")));
+        fifthCourse.setIcon(new ImageIcon(ResourceLoader.getImage("/image/forButton/5.png")));
         fifthCourse.setEnabled(false);
         fifthCourse.addActionListener(e -> {
             if (fifthCourse.isSelected()) {
@@ -148,7 +191,7 @@ public class MainWindow {
 
     private static void getArchive() {
         JToggleButton archive = new JToggleButton("Архив");
-        archive.setIcon(new ImageIcon(ResourceLoader.getImage("image/archive.png")));
+        archive.setIcon(new ImageIcon(ResourceLoader.getImage("/image/archive.png")));
         archive.setBackground(Color.green);
         archive.setEnabled(false);
         archive.addActionListener(e -> {
