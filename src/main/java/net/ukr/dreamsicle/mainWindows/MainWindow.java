@@ -38,7 +38,9 @@ public class MainWindow {
         getFourthCourse();
         getFifthCourse();
         getArchive();
-        getConnectDB();
+//        getConnectDB();
+
+        jPanelMainWindow.updateUI();
 
     }
 
@@ -61,7 +63,7 @@ public class MainWindow {
                 }
             } catch (SQLException | ClassNotFoundException | IllegalAccessException | InstantiationException e1) {
                 Logger.log(e1, "No connect to BD");
-                JOptionPane.showMessageDialog(null,"Нет соединения с БД", null,JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Нет соединения с БД", null, JOptionPane.WARNING_MESSAGE);
             }
             dataBase.setSelected(false);
         });

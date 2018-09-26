@@ -7,8 +7,10 @@ import javax.swing.*;
 import java.awt.*;
 
 import static net.ukr.dreamsicle.Window.jPanelFourWindow;
+import static net.ukr.dreamsicle.staticData.StaticData.*;
 
 public class FirstCourseOneGroup {
+
 
     static ExistsFile existsFile = new ExistsFile();
 
@@ -28,7 +30,7 @@ public class FirstCourseOneGroup {
         label.setForeground(new Color(255, 21, 0));
         label.setText(".........");
 
-//        firstGroup.addActionListener(e -> OpenLocalFile.openLocalFile("C://Training_division_tools//info//Семестровый_план.xlsx"));
+//        firstOneGroupOne.addActionListener(e -> OpenLocalFile.openLocalFile("C://Training_division_tools//info//Семестровый_план.xlsx"));
 
         jPanelFourWindow.add(label, new GridBagConstraints(6, 1, 1, 1, 0.0, 0.9,
                 GridBagConstraints.CENTER, GridBagConstraints.HORIZONTAL, new Insets(30, 2, 2, 2),
@@ -37,78 +39,75 @@ public class FirstCourseOneGroup {
 
 
     private void getFirstOneGroup() {
-        JButton firstGroup = new JButton("группа 211/1");
+        firstOneGroupOne = new JButton("группа 211/1");
 
-
-        existsFile.getExistsFile(firstGroup, "C:\\Training_division_tools\\2018_год_поступления\\list_cadets\\211.1.txt");
-//        firstGroup.addActionListener(e -> OpenLocalFile.openLocalFile("C://Training_division_tools//info//Семестровый_план.xlsx"));
-
-        firstGroup.addActionListener(e -> {
+        firstOneGroupOne.addActionListener(e -> {
             JFrameListCadets jFrameListCadets = new JFrameListCadets();
             jFrameListCadets.getJFrameListCadets("211.1");
         });
 
-
-        jPanelFourWindow.add(firstGroup, new GridBagConstraints(1, 1, 1, 1, 0.0, 0.9,
+        jPanelFourWindow.add(firstOneGroupOne, new GridBagConstraints(1, 1, 1, 1, 0.0, 0.9,
                 GridBagConstraints.CENTER, GridBagConstraints.HORIZONTAL, new Insets(30, 2, 2, 2),
                 0, 0));
     }
 
     private void getFirstTwoGroup() {
-        JButton secondGroup = new JButton("группа 211/2");
+        firstOneGroupTwo = new JButton("группа 211/2");
 
-        existsFile.getExistsFile(secondGroup, "C:\\Training_division_tools\\2018_год_поступления\\list_cadets\\211.2.txt");
-
-        secondGroup.addActionListener(e -> {
+        firstOneGroupTwo.addActionListener(e -> {
             JFrameListCadets jFrameListCadets = new JFrameListCadets();
             jFrameListCadets.getJFrameListCadets("211.2");
         });
-//        secondGroup.addActionListener(e -> OpenLocalFile.openLocalFile("C://Training_division_tools//info//Семейное_положение.xlsx"));
 
-        jPanelFourWindow.add(secondGroup, new GridBagConstraints(2, 1, 1, 1, 0.0, 0.9,
+        jPanelFourWindow.add(firstOneGroupTwo, new GridBagConstraints(2, 1, 1, 1, 0.0, 0.9,
                 GridBagConstraints.CENTER, GridBagConstraints.HORIZONTAL, new Insets(30, 2, 2, 2),
                 0, 0));
     }
 
 
     private void getFirstThreeGroup() {
-        JButton thirdGroup = new JButton("группа 211/3");
+        firstOneGroupThird = new JButton("группа 211/3");
 
-        existsFile.getExistsFile(thirdGroup, "C:\\Training_division_tools\\2018_год_поступления\\list_cadets\\211.3.txt");
+        existsFile.getExistsFile(firstOneGroupThird, "C:\\Training_division_tools\\2018_год_поступления\\list_cadets\\211.3.txt");
 //        thirdGroup.addActionListener(e -> OpenLocalFile.openLocalFile("C://Training_division_tools//info//Год.xlsx"));
 
-        thirdGroup.addActionListener(e -> {
+        firstOneGroupThird.addActionListener(e -> {
             JFrameListCadets jFrameListCadets = new JFrameListCadets();
-            jFrameListCadets.getJFrameListCadets("211.2");
+            jFrameListCadets.getJFrameListCadets("211.3");
         });
-        jPanelFourWindow.add(thirdGroup, new GridBagConstraints(3, 1, 1, 1, 0.0, 0.9,
+        jPanelFourWindow.add(firstOneGroupThird, new GridBagConstraints(3, 1, 1, 1, 0.0, 0.9,
                 GridBagConstraints.CENTER, GridBagConstraints.HORIZONTAL, new Insets(30, 2, 2, 2),
                 0, 0));
     }
 
     private void getFirstFourGroup() {
-        JButton fourGroup = new JButton("группа 211/4");
+        firstOneGroupFour = new JButton("группа 211/4");
 
-        existsFile.getExistsFile(fourGroup, "C:\\Training_division_tools\\2018_год_поступления\\list_cadets\\211.4.txt");
+        existsFile.getExistsFile(firstOneGroupFour, "C:\\Training_division_tools\\2018_год_поступления\\list_cadets\\211.4.txt");
 
-        fourGroup.addActionListener(e -> {
+        firstOneGroupFour.addActionListener(e -> {
             JFrameListCadets jFrameListCadets = new JFrameListCadets();
             jFrameListCadets.getJFrameListCadets("211.4");
         });
 //        thirdGroup.addActionListener(e -> OpenLocalFile.openLocalFile("C://Training_division_tools//info//Год.xlsx"));
 
-        jPanelFourWindow.add(fourGroup, new GridBagConstraints(4, 1, 1, 1, 0.0, 0.9,
+        jPanelFourWindow.add(firstOneGroupFour, new GridBagConstraints(4, 1, 1, 1, 0.0, 0.9,
                 GridBagConstraints.CENTER, GridBagConstraints.HORIZONTAL, new Insets(30, 2, 2, 2),
                 0, 0));
     }
 
     private void getFirstFiveGroup() {
-        JButton fiveGroup = new JButton("группа 211/5");
+        firstOneGroupFive = new JButton("группа 211/5");
 
-        existsFile.getExistsFile(fiveGroup, "C:\\Training_division_tools\\2018_год_поступления\\list_cadets\\211.5.txt");
+        existsFile.getExistsFile(firstOneGroupFive, "C:\\Training_division_tools\\2018_год_поступления\\list_cadets\\211.5.txt");
 //        thirdGroup.addActionListener(e -> OpenLocalFile.openLocalFile("C://Training_division_tools//info//Год.xlsx"));
 
-        jPanelFourWindow.add(fiveGroup, new GridBagConstraints(5, 1, 1, 1, 0.0, 0.9,
+        firstOneGroupFive.addActionListener(e -> {
+            JFrameListCadets jFrameListCadets = new JFrameListCadets();
+            jFrameListCadets.getJFrameListCadets("211.5");
+        });
+
+        jPanelFourWindow.add(firstOneGroupFive, new GridBagConstraints(5, 1, 1, 1, 0.0, 0.9,
                 GridBagConstraints.CENTER, GridBagConstraints.HORIZONTAL, new Insets(30, 2, 2, 2),
                 0, 0));
     }

@@ -29,6 +29,8 @@ public class ThreeMainWindow {
         getFaculty();
         getSemesterControlForm();
         getBackTwoWindow();
+
+        jPanelThreeWindow.updateUI();
     }
 
     public static void getBackTwoWindow() {

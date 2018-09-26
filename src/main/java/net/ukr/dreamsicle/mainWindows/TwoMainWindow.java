@@ -2,6 +2,7 @@ package net.ukr.dreamsicle.mainWindows;
 
 import net.ukr.dreamsicle.ResourceLoader;
 import net.ukr.dreamsicle.dataBase.UpdateDBCommonTable;
+import net.ukr.dreamsicle.showActiveButton.ShowActiveButtonGroup;
 
 import javax.swing.*;
 import java.awt.*;
@@ -25,6 +26,8 @@ public class TwoMainWindow {
         getAddInfo();
         getLabel();
         getGroup();
+
+        jPanelTwoWindow.updateUI();
     }
 
     public static void getBack() {
@@ -114,6 +117,13 @@ public class TwoMainWindow {
                 jPanelThreeWindow.setVisible(false);
                 jPanelFourWindow.setVisible(true);
                 jPanelFiveWindowArchive.setVisible(false);
+
+                ShowActiveButtonGroup showActiveButtonGroup = new ShowActiveButtonGroup();
+                showActiveButtonGroup.getShowActiveButtonGroupCadets();
+
+                jPanelFourWindow.updateUI();
+                jFrame.revalidate();
+
                 group.setSelected(false);
             }
         });

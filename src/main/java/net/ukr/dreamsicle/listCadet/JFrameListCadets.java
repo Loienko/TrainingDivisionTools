@@ -28,7 +28,7 @@ public class JFrameListCadets {
         }
 
         jFrame.setTitle("Список курсантов");
-        jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        jFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         Toolkit defaultToolkit = Toolkit.getDefaultToolkit();
 
         Dimension dimension = defaultToolkit.getScreenSize();

@@ -45,11 +45,15 @@ public class Window {
 
 
         jPanelMainWindow.revalidate();
-
+        jPanelMainWindow.updateUI();
         jPanelTwoWindow.revalidate();
+        jPanelTwoWindow.updateUI();
         jPanelThreeWindow.revalidate();
+        jPanelThreeWindow.updateUI();
         jPanelFourWindow.revalidate();
+        jPanelFourWindow.updateUI();
         jPanelFiveWindowArchive.revalidate();
+        jPanelFiveWindowArchive.updateUI();
         jFrame.revalidate();
     }
 }

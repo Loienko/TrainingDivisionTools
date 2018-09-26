@@ -61,6 +61,9 @@ public class SortingCadetsByGroups {
     private void getSortedCadets(Iterator<Cell> cellIterator, Cell cell, String stringCellValue) {
         StringBuilder builder = new StringBuilder();
         switch (stringCellValue) {
+            case "211":
+                readAndWriteData(cellIterator, cell, builder, "C:\\Training_division_tools\\2018_год_поступления\\list_cadets\\211.txt");
+                break;
             case "211/1":
                 readAndWriteData(cellIterator, cell, builder, "C:\\Training_division_tools\\2018_год_поступления\\list_cadets\\211.1.txt");
                 break;
@@ -75,6 +78,9 @@ public class SortingCadetsByGroups {
                 break;
             case "211/5":
                 readAndWriteData(cellIterator, cell, builder, "C:\\Training_division_tools\\2018_год_поступления\\list_cadets\\211.5.txt");
+                break;
+            case "212":
+                readAndWriteData(cellIterator, cell, builder, "C:\\Training_division_tools\\2018_год_поступления\\list_cadets\\212.txt");
                 break;
             case "212/1":
                 readAndWriteData(cellIterator, cell, builder, "C:\\Training_division_tools\\2018_год_поступления\\list_cadets\\212.1.txt");
@@ -91,6 +97,9 @@ public class SortingCadetsByGroups {
             case "212/5":
                 readAndWriteData(cellIterator, cell, builder, "C:\\Training_division_tools\\2018_год_поступления\\list_cadets\\212.5.txt");
                 break;
+            case "213":
+                readAndWriteData(cellIterator, cell, builder, "C:\\Training_division_tools\\2018_год_поступления\\list_cadets\\213.txt");
+                break;
             case "213/1":
                 readAndWriteData(cellIterator, cell, builder, "C:\\Training_division_tools\\2018_год_поступления\\list_cadets\\213.1.txt");
                 break;
@@ -105,6 +114,9 @@ public class SortingCadetsByGroups {
                 break;
             case "213/5":
                 readAndWriteData(cellIterator, cell, builder, "C:\\Training_division_tools\\2018_год_поступления\\list_cadets\\213.5.txt");
+                break;
+            case "214":
+                readAndWriteData(cellIterator, cell, builder, "C:\\Training_division_tools\\2018_год_поступления\\list_cadets\\214.txt");
                 break;
             case "214/1":
                 readAndWriteData(cellIterator, cell, builder, "C:\\Training_division_tools\\2018_год_поступления\\list_cadets\\214.1.txt");
@@ -121,6 +133,9 @@ public class SortingCadetsByGroups {
             case "214/5":
                 readAndWriteData(cellIterator, cell, builder, "C:\\Training_division_tools\\2018_год_поступления\\list_cadets\\214.5.txt");
                 break;
+            case "215":
+                readAndWriteData(cellIterator, cell, builder, "C:\\Training_division_tools\\2018_год_поступления\\list_cadets\\215.txt");
+                break;
             case "215/1":
                 readAndWriteData(cellIterator, cell, builder, "C:\\Training_division_tools\\2018_год_поступления\\list_cadets\\215.1.txt");
                 break;
@@ -135,6 +150,9 @@ public class SortingCadetsByGroups {
                 break;
             case "215/5":
                 readAndWriteData(cellIterator, cell, builder, "C:\\Training_division_tools\\2018_год_поступления\\list_cadets\\215.5.txt");
+                break;
+            case "216":
+                readAndWriteData(cellIterator, cell, builder, "C:\\Training_division_tools\\2018_год_поступления\\list_cadets\\216.txt");
                 break;
             case "216/1":
                 readAndWriteData(cellIterator, cell, builder, "C:\\Training_division_tools\\2018_год_поступления\\list_cadets\\216.1.txt");
@@ -152,6 +170,8 @@ public class SortingCadetsByGroups {
                 readAndWriteData(cellIterator, cell, builder, "C:\\Training_division_tools\\2018_год_поступления\\list_cadets\\216.5.txt");
                 break;
             default:
+                readAndWriteData(cellIterator, cell, builder, "C:\\Training_division_tools\\2018_год_поступления\\list_cadets\\garbage.txt");
+
                             /*JOptionPane.showMessageDialog(null, "Возникла проблема при сортировке!!! " +
                                     "Перезапустите программу и попробуйте произвести действия еще раз!!! " +
                                     "При возникновении повторной ошибки, обратитесь к разработчику ПО.");*/

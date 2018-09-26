@@ -4,6 +4,7 @@ import net.ukr.dreamsicle.ResourceLoader;
 import net.ukr.dreamsicle.courseOne.*;
 import net.ukr.dreamsicle.read_write_copy_file.ExistsFile;
 import net.ukr.dreamsicle.removeFiles.RemoveAllFilesInFolder;
+import net.ukr.dreamsicle.showActiveButton.ShowActiveButtonGroup;
 
 import javax.swing.*;
 import java.awt.*;
@@ -26,6 +27,9 @@ public class FourMainWindowListCadetsGroup {
         getGroupFivePulpit();
         getGroupSixPulpit();
         getUpdateList();
+
+        jPanelFourWindow.updateUI();
+        jPanelFourWindow.revalidate();
     }
 
     private static void getGroupFirstPulpit() {
@@ -79,8 +83,12 @@ public class FourMainWindowListCadetsGroup {
             new RemoveAllFilesInFolder("C:\\Training_division_tools\\2018_год_поступления\\list_cadets\\");
             new SortingCadetsByGroups("C:\\Training_division_tools\\2018_год_поступления\\1_курс\\commonTable.xlsx");
 
+            ShowActiveButtonGroup showActiveButtonGroup = new ShowActiveButtonGroup();
+            showActiveButtonGroup.getShowActiveButtonGroupCadets();
+
             update.setSelected(false);
         });
+
 
         jPanelFourWindow.add(update, new GridBagConstraints(3, 0, 1, 1, 0.0, 0.9,
                 GridBagConstraints.CENTER, GridBagConstraints.HORIZONTAL, new Insets(30, 2, 2, 2),

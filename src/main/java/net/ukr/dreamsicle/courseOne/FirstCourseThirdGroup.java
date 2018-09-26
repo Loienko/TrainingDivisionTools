@@ -1,10 +1,13 @@
 package net.ukr.dreamsicle.courseOne;
 
+import net.ukr.dreamsicle.listCadet.JFrameListCadets;
+
 import javax.swing.*;
 import java.awt.*;
 
 import static net.ukr.dreamsicle.Window.jPanelFourWindow;
 import static net.ukr.dreamsicle.courseOne.FirstCourseOneGroup.existsFile;
+import static net.ukr.dreamsicle.staticData.StaticData.*;
 
 public class FirstCourseThirdGroup {
 
@@ -17,56 +20,66 @@ public class FirstCourseThirdGroup {
     }
 
     private void getThirdOneGroup() {
-        JButton firstGroup = new JButton("группа 213/1");
+        firstThreeGroupOne = new JButton("группа 213/1");
 
-        existsFile.getExistsFile(firstGroup, "C:\\Training_division_tools\\2018_год_поступления\\list_cadets\\213.1.txt");
-//        firstGroup.addActionListener(e -> OpenLocalFile.openLocalFile("C://Training_division_tools//info//Семестровый_план.xlsx"));
-
-        jPanelFourWindow.add(firstGroup, new GridBagConstraints(1, 3, 1, 1, 0.0, 0.9,
+        existsFile.getExistsFile(firstThreeGroupOne, "C:\\Training_division_tools\\2018_год_поступления\\list_cadets\\213.1.txt");
+        firstThreeGroupOne.addActionListener(e -> {
+            JFrameListCadets jFrameListCadets = new JFrameListCadets();
+            jFrameListCadets.getJFrameListCadets("213.1");
+        });
+        jPanelFourWindow.add(firstThreeGroupOne, new GridBagConstraints(1, 3, 1, 1, 0.0, 0.9,
                 GridBagConstraints.CENTER, GridBagConstraints.HORIZONTAL, new Insets(30, 2, 2, 2),
                 0, 0));
     }
 
     private void getThirdTwoGroup() {
-        JButton secondGroup = new JButton("группа 213/2");
+        firstThreeGroupTwo = new JButton("группа 213/2");
 
-        existsFile.getExistsFile(secondGroup, "C:\\Training_division_tools\\2018_год_поступления\\list_cadets\\213.2.txt");
-//        secondGroup.addActionListener(e -> OpenLocalFile.openLocalFile("C://Training_division_tools//info//Семейное_положение.xlsx"));
-
-        jPanelFourWindow.add(secondGroup, new GridBagConstraints(2, 3, 1, 1, 0.0, 0.9,
+        existsFile.getExistsFile(firstThreeGroupTwo, "C:\\Training_division_tools\\2018_год_поступления\\list_cadets\\213.2.txt");
+        firstThreeGroupTwo.addActionListener(e -> {
+            JFrameListCadets jFrameListCadets = new JFrameListCadets();
+            jFrameListCadets.getJFrameListCadets("213.2");
+        });
+        jPanelFourWindow.add(firstThreeGroupTwo, new GridBagConstraints(2, 3, 1, 1, 0.0, 0.9,
                 GridBagConstraints.CENTER, GridBagConstraints.HORIZONTAL, new Insets(30, 2, 2, 2),
                 0, 0));
     }
 
     private void getThirdThreeGroup() {
-        JButton thirdGroup = new JButton("группа 213/3");
+        firstThreeGroupThird = new JButton("группа 213/3");
 
-        existsFile.getExistsFile(thirdGroup, "C:\\Training_division_tools\\2018_год_поступления\\list_cadets\\213.3.txt");
-//        thirdGroup.addActionListener(e -> OpenLocalFile.openLocalFile("C://Training_division_tools//info//Год.xlsx"));
-
-        jPanelFourWindow.add(thirdGroup, new GridBagConstraints(3, 3, 1, 1, 0.0, 0.9,
+        existsFile.getExistsFile(firstThreeGroupThird, "C:\\Training_division_tools\\2018_год_поступления\\list_cadets\\213.3.txt");
+        firstThreeGroupThird.addActionListener(e -> {
+            JFrameListCadets jFrameListCadets = new JFrameListCadets();
+            jFrameListCadets.getJFrameListCadets("213.3");
+        });
+        jPanelFourWindow.add(firstThreeGroupThird, new GridBagConstraints(3, 3, 1, 1, 0.0, 0.9,
                 GridBagConstraints.CENTER, GridBagConstraints.HORIZONTAL, new Insets(30, 2, 2, 2),
                 0, 0));
     }
 
     private void getThirdFourGroup() {
-        JButton fourGroup = new JButton("группа 213/4");
+        firstThreeGroupFour = new JButton("группа 213/4");
 
-        existsFile.getExistsFile(fourGroup, "C:\\Training_division_tools\\2018_год_поступления\\list_cadets\\213.4.txt");
-//        thirdGroup.addActionListener(e -> OpenLocalFile.openLocalFile("C://Training_division_tools//info//Год.xlsx"));
-
-        jPanelFourWindow.add(fourGroup, new GridBagConstraints(4, 3, 1, 1, 0.0, 0.9,
+        existsFile.getExistsFile(firstThreeGroupFour, "C:\\Training_division_tools\\2018_год_поступления\\list_cadets\\213.4.txt");
+        firstThreeGroupFour.addActionListener(e -> {
+            JFrameListCadets jFrameListCadets = new JFrameListCadets();
+            jFrameListCadets.getJFrameListCadets("213.4");
+        });
+        jPanelFourWindow.add(firstThreeGroupFour, new GridBagConstraints(4, 3, 1, 1, 0.0, 0.9,
                 GridBagConstraints.CENTER, GridBagConstraints.HORIZONTAL, new Insets(30, 2, 2, 2),
                 0, 0));
     }
 
     private void getThirdFiveGroup() {
-        JButton fiveGroup = new JButton("группа 213/5");
+        firstThreeGroupFive = new JButton("группа 213/5");
 
-        existsFile.getExistsFile(fiveGroup, "C:\\Training_division_tools\\2018_год_поступления\\list_cadets\\213.5.txt");
-//        thirdGroup.addActionListener(e -> OpenLocalFile.openLocalFile("C://Training_division_tools//info//Год.xlsx"));
-
-        jPanelFourWindow.add(fiveGroup, new GridBagConstraints(5, 3, 1, 1, 0.0, 0.9,
+        existsFile.getExistsFile(firstThreeGroupFive, "C:\\Training_division_tools\\2018_год_поступления\\list_cadets\\213.5.txt");
+        firstThreeGroupFive.addActionListener(e -> {
+            JFrameListCadets jFrameListCadets = new JFrameListCadets();
+            jFrameListCadets.getJFrameListCadets("213.5");
+        });
+        jPanelFourWindow.add(firstThreeGroupFive, new GridBagConstraints(5, 3, 1, 1, 0.0, 0.9,
                 GridBagConstraints.CENTER, GridBagConstraints.HORIZONTAL, new Insets(30, 2, 2, 2),
                 0, 0));
     }
