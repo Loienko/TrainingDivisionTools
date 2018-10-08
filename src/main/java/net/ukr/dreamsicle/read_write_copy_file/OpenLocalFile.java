@@ -8,8 +8,10 @@ public class OpenLocalFile {
 
     public static void openLocalFile(String pathFileName) {
         Runtime runtime = Runtime.getRuntime();
+        Process proc = null;
         try {
-            runtime.exec("cmd /c start " + pathFileName);
+            p = runtime.exec("cmd /c start " + pathFileName);
+            p.waitFor();
         } catch (IOException e) {
             Logger.log(e, "Не возможно установить связь с программой");
         }
