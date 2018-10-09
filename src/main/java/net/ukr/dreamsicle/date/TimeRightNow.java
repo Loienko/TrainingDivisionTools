@@ -17,6 +17,8 @@ public class TimeRightNow {
         System.out.println(date);
     }
 
+
+
     public static int getMonthDate() {
         GregorianCalendar gregorianCalendar = new GregorianCalendar();
         int month = gregorianCalendar.get(Calendar.MONTH);

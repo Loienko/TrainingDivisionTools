@@ -6,24 +6,36 @@ import javax.swing.*;
 import java.awt.*;
 
 import static net.ukr.dreamsicle.Window.jPanelFourWindow;
-import static net.ukr.dreamsicle.courseOne.FirstCourseOneGroup.existsFile;
 import static net.ukr.dreamsicle.staticData.StaticData.*;
 
-public class FirstCourseSecondGroup {
+public class FirstCourseSecondGroup  implements LabelClass{
 
     public FirstCourseSecondGroup() {
+        getSecondGroup();
         getSecondOneGroup();
         getSecondTwoGroup();
         getSecondThreeGroup();
-        getSecondThreeGroup();
         getSecondFourGroup();
         getSecondFiveGroup();
+        getLabel();
+    }
+
+    private void getSecondGroup() {
+        firstTwoGroup = new JButton("группа 212");
+
+        firstTwoGroup.addActionListener(e -> {
+            JFrameListCadets jFrameListCadets = new JFrameListCadets();
+            jFrameListCadets.getJFrameListCadets("212");
+        });
+
+        jPanelFourWindow.add(firstTwoGroup, new GridBagConstraints(0, 2, 1, 1, 0.0, 0.9,
+                GridBagConstraints.CENTER, GridBagConstraints.HORIZONTAL, new Insets(30, 2, 2, 2),
+                0, 0));
     }
 
     private void getSecondOneGroup() {
         firstTwoGroupOne = new JButton("группа 212/1");
 
-        existsFile.getExistsFile(firstTwoGroupOne, "C:\\Training_division_tools\\2018_год_поступления\\list_cadets\\212.1.txt");
         firstTwoGroupOne.addActionListener(e -> {
             JFrameListCadets jFrameListCadets = new JFrameListCadets();
             jFrameListCadets.getJFrameListCadets("212.1");
@@ -37,7 +49,6 @@ public class FirstCourseSecondGroup {
     private void getSecondTwoGroup() {
         firstTwoGroupTwo = new JButton("группа 212/2");
 
-        existsFile.getExistsFile(firstTwoGroupTwo, "C:\\Training_division_tools\\2018_год_поступления\\list_cadets\\212.2.txt");
         firstTwoGroupTwo.addActionListener(e -> {
             JFrameListCadets jFrameListCadets = new JFrameListCadets();
             jFrameListCadets.getJFrameListCadets("212.2");
@@ -51,10 +62,10 @@ public class FirstCourseSecondGroup {
     private void getSecondThreeGroup() {
         firstTwoGroupThird = new JButton("группа 212/3");
 
-        existsFile.getExistsFile(firstTwoGroupThird, "C:\\Training_division_tools\\2018_год_поступления\\list_cadets\\212.3.txt");
         firstTwoGroupThird.addActionListener(e -> {
             JFrameListCadets jFrameListCadets = new JFrameListCadets();
             jFrameListCadets.getJFrameListCadets("212.3");
+
         });
 
         jPanelFourWindow.add(firstTwoGroupThird, new GridBagConstraints(3, 2, 1, 1, 0.0, 0.9,
@@ -65,7 +76,6 @@ public class FirstCourseSecondGroup {
     private void getSecondFourGroup() {
         firstTwoGroupFour = new JButton("группа 212/4");
 
-        existsFile.getExistsFile(firstTwoGroupFour, "C:\\Training_division_tools\\2018_год_поступления\\list_cadets\\212.4.txt");
         firstTwoGroupFour.addActionListener(e -> {
             JFrameListCadets jFrameListCadets = new JFrameListCadets();
             jFrameListCadets.getJFrameListCadets("212.4");
@@ -80,13 +90,23 @@ public class FirstCourseSecondGroup {
     private void getSecondFiveGroup() {
         firstTwoGroupFive = new JButton("группа 212/5");
 
-        existsFile.getExistsFile(firstTwoGroupFive, "C:\\Training_division_tools\\2018_год_поступления\\list_cadets\\212.5.txt");
         firstTwoGroupFive.addActionListener(e -> {
             JFrameListCadets jFrameListCadets = new JFrameListCadets();
             jFrameListCadets.getJFrameListCadets("212.5");
         });
 
         jPanelFourWindow.add(firstTwoGroupFive, new GridBagConstraints(5, 2, 1, 1, 0.0, 0.9,
+                GridBagConstraints.CENTER, GridBagConstraints.HORIZONTAL, new Insets(30, 2, 2, 2),
+                0, 0));
+    }
+
+    @Override
+    public void getLabel() {
+        JLabel label = new JLabel();
+        label.setBackground(new Color(0x6333DD));
+        label.setText("....");
+
+        jPanelFourWindow.add(label, new GridBagConstraints(6, 2, 1, 1, 0.0, 0.9,
                 GridBagConstraints.CENTER, GridBagConstraints.HORIZONTAL, new Insets(30, 2, 2, 2),
                 0, 0));
     }

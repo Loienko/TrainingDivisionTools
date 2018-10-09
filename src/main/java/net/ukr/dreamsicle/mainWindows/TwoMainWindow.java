@@ -59,7 +59,7 @@ public class TwoMainWindow {
         JButton commonTable = new JButton("Общая таблица");
         commonTable.setIcon(new ImageIcon(ResourceLoader.getImage("/image/forButton/infoAboutCadets.png")));
         commonTable.addActionListener(e -> openLocalFile("C://Training_division_tools//2018_год_поступления//1_курс//commonTable.xlsx"));
-        new UpdateDBCommonTable();
+        UpdateDBCommonTable updateDBCommonTable = new UpdateDBCommonTable();
 
         jPanelTwoWindow.add(commonTable, new GridBagConstraints(4, 2, 4, 1, 0.0, 0.9,
                 GridBagConstraints.CENTER, GridBagConstraints.HORIZONTAL, new Insets(30, 2, 2, 2),

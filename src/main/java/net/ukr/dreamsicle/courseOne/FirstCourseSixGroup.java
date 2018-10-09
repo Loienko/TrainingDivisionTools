@@ -9,20 +9,33 @@ import static net.ukr.dreamsicle.Window.jPanelFourWindow;
 import static net.ukr.dreamsicle.courseOne.FirstCourseOneGroup.existsFile;
 import static net.ukr.dreamsicle.staticData.StaticData.*;
 
-public class FirstCourseSixGroup {
+public class FirstCourseSixGroup  implements LabelClass{
 
     public FirstCourseSixGroup() {
+        getSixGroup();
         getSixOneGroup();
         getSixTwoGroup();
         getSixThreeGroup();
         getSixFourGroup();
         getSixFiveGroup();
+        getLabel();
+    }
+
+    private void getSixGroup() {
+        firstSixGroup = new JButton("группа 216");
+
+        firstSixGroup.addActionListener(e -> {
+            JFrameListCadets jFrameListCadets = new JFrameListCadets();
+            jFrameListCadets.getJFrameListCadets("216");
+        });
+        jPanelFourWindow.add(firstSixGroup, new GridBagConstraints(0, 6, 1, 1, 0.0, 0.9,
+                GridBagConstraints.CENTER, GridBagConstraints.HORIZONTAL, new Insets(30, 2, 2, 2),
+                0, 0));
     }
 
     private void getSixOneGroup() {
         firstSixGroupOne = new JButton("группа 216/1");
 
-        existsFile.getExistsFile(firstSixGroupOne, "C:\\Training_division_tools\\2018_год_поступления\\list_cadets\\216.1.txt");
         firstSixGroupOne.addActionListener(e -> {
             JFrameListCadets jFrameListCadets = new JFrameListCadets();
             jFrameListCadets.getJFrameListCadets("216.1");
@@ -35,8 +48,6 @@ public class FirstCourseSixGroup {
     private void getSixTwoGroup() {
         firstSixGroupTwo = new JButton("группа 216/2");
 
-        existsFile.getExistsFile(firstSixGroupTwo, "C:\\Training_division_tools\\2018_год_поступления\\list_cadets\\216.2.txt");
-//        firstSixGroupTwo.addActionListener(e -> OpenLocalFile.openLocalFile("C://Training_division_tools//info//Семейное_положение.xlsx"));
         firstSixGroupTwo.addActionListener(e -> {
             JFrameListCadets jFrameListCadets = new JFrameListCadets();
             jFrameListCadets.getJFrameListCadets("216.2");
@@ -49,8 +60,6 @@ public class FirstCourseSixGroup {
     private void getSixThreeGroup() {
         firstSixGroupThird = new JButton("группа 216/3");
 
-        existsFile.getExistsFile(firstSixGroupThird, "C:\\Training_division_tools\\2018_год_поступления\\list_cadets\\216.3.txt");
-//        firstSixGroupThird.addActionListener(e -> OpenLocalFile.openLocalFile("C://Training_division_tools//info//Год.xlsx"));
         firstSixGroupThird.addActionListener(e -> {
             JFrameListCadets jFrameListCadets = new JFrameListCadets();
             jFrameListCadets.getJFrameListCadets("216.3");
@@ -63,8 +72,6 @@ public class FirstCourseSixGroup {
     private void getSixFourGroup() {
         firstSixGroupFour = new JButton("группа 216/4");
 
-        existsFile.getExistsFile(firstSixGroupFour, "C:\\Training_division_tools\\2018_год_поступления\\list_cadets\\216.4.txt");
-//        thirdGroup.addActionListener(e -> OpenLocalFile.openLocalFile("C://Training_division_tools//info//Год.xlsx"));
         firstSixGroupFour.addActionListener(e -> {
             JFrameListCadets jFrameListCadets = new JFrameListCadets();
             jFrameListCadets.getJFrameListCadets("216.4");
@@ -77,8 +84,6 @@ public class FirstCourseSixGroup {
     private void getSixFiveGroup() {
         firstSixGroupFive = new JButton("группа 216/5");
 
-        existsFile.getExistsFile(firstSixGroupFive, "C:\\Training_division_tools\\2018_год_поступления\\list_cadets\\216.5.txt");
-//        thirdGroup.addActionListener(e -> OpenLocalFile.openLocalFile("C://Training_division_tools//info//Год.xlsx"));
         firstSixGroupFive.addActionListener(e -> {
             JFrameListCadets jFrameListCadets = new JFrameListCadets();
             jFrameListCadets.getJFrameListCadets("216.5");
@@ -88,4 +93,14 @@ public class FirstCourseSixGroup {
                 0, 0));
     }
 
+    @Override
+    public void getLabel() {
+        JLabel label = new JLabel();
+        label.setBackground(new Color(0x6333DD));
+        label.setText("СД");
+
+        jPanelFourWindow.add(label, new GridBagConstraints(6, 6, 1, 1, 0.0, 0.9,
+                GridBagConstraints.CENTER, GridBagConstraints.HORIZONTAL, new Insets(30, 2, 2, 2),
+                0, 0));
+    }
 }

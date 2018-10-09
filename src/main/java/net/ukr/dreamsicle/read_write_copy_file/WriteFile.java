@@ -16,7 +16,7 @@ public class WriteFile {
 
     @Test
     public static void main(String[] args) {
-        new WriteFile("D:\\test\\BufferedWriter.txt", "OK");
+        new WriteFile("D:\\test\\BufferedWriter.txt", "fuck111");
         System.out.println("0 OK");
 
     }
@@ -28,9 +28,9 @@ public class WriteFile {
         try (FileWriter fr = new FileWriter(file, true);
              BufferedWriter br = new BufferedWriter(fr)
         ) {
-            br.newLine();
             //теперь мы можем использовать метод write или метод append
             br.write(text);
+            br.newLine();
         } catch (IOException e) {
             Logger.log(e, "Не возмножно записать данные в файл");
         }

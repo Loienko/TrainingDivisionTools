@@ -2,6 +2,7 @@ package net.ukr.dreamsicle.mainWindows;
 
 import net.ukr.dreamsicle.ResourceLoader;
 import net.ukr.dreamsicle.addNewCourse.AddNewCourse;
+import net.ukr.dreamsicle.dataBase.ConnectionDataBase;
 import net.ukr.dreamsicle.logger.Logger;
 
 import javax.swing.*;
@@ -9,8 +10,6 @@ import java.awt.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.SQLException;
 
 import static net.ukr.dreamsicle.Window.*;
@@ -38,7 +37,7 @@ public class MainWindow {
         getFourthCourse();
         getFifthCourse();
         getArchive();
-//        getConnectDB();
+        getConnectDB();
 
         jPanelMainWindow.updateUI();
 
@@ -46,24 +45,16 @@ public class MainWindow {
 
     private static void getConnectDB() {
         JToggleButton dataBase = new JToggleButton("Подключится к БД");
-        dataBase.setIcon(new ImageIcon(ResourceLoader.getImage("/image/forButton/soldier.png")));
-
-        final String URL = "jdbc:mysql://localhost:3306/cadets?useSSL=false";
-        final String USERNAME = "root";
-        final String PASSWORD = "dream";
-
+        dataBase.setIcon(new ImageIcon(ResourceLoader.getImage("/image/forButton/db.png")));
 
         dataBase.addActionListener(e -> {
-            try (Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD)) {
-
-                Class.forName("com.mysql.jdbc.Driver").newInstance();
-
-                if (!connection.isClosed()) {
-                    JOptionPane.showMessageDialog(null, "Соединение с Базой данных установлено успешно!!!");
-                }
-            } catch (SQLException | ClassNotFoundException | IllegalAccessException | InstantiationException e1) {
-                Logger.log(e1, "No connect to BD");
-                JOptionPane.showMessageDialog(null, "Нет соединения с БД", null, JOptionPane.WARNING_MESSAGE);
+            ConnectionDataBase connection = new ConnectionDataBase();
+            try {
+                connection.getConnectionDB();
+            } catch (ClassNotFoundException | SQLException e1) {
+                e1.printStackTrace();
+                Logger.log(e1, "No connect from DB");
+                JOptionPane.showMessageDialog(null, "Нет соединения с БД", "", JOptionPane.WARNING_MESSAGE);
             }
             dataBase.setSelected(false);
         });

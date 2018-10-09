@@ -8,14 +8,28 @@ import java.awt.*;
 import static net.ukr.dreamsicle.Window.jPanelFourWindow;
 import static net.ukr.dreamsicle.staticData.StaticData.*;
 
-public class FirstCourseFourGroup {
+public class FirstCourseFourGroup implements LabelClass {
 
     public FirstCourseFourGroup() {
+        getFourGroup();
         getFourOneGroup();
         getFourTwoGroup();
         getFourThreeGroup();
         getFourFourGroup();
         getFourFiveGroup();
+        getLabel();
+    }
+
+    private void getFourGroup() {
+        firstFourGroup = new JButton("группа 214");
+
+        firstFourGroup.addActionListener(e -> {
+            JFrameListCadets jFrameListCadets = new JFrameListCadets();
+            jFrameListCadets.getJFrameListCadets("214");
+        });
+        jPanelFourWindow.add(firstFourGroup, new GridBagConstraints(0, 4, 1, 1, 0.0, 0.9,
+                GridBagConstraints.CENTER, GridBagConstraints.HORIZONTAL, new Insets(30, 2, 2, 2),
+                0, 0));
     }
 
     private void getFourOneGroup() {
@@ -74,6 +88,17 @@ public class FirstCourseFourGroup {
             jFrameListCadets.getJFrameListCadets("214.5");
         });
         jPanelFourWindow.add(firstFourGroupFive, new GridBagConstraints(5, 4, 1, 1, 0.0, 0.9,
+                GridBagConstraints.CENTER, GridBagConstraints.HORIZONTAL, new Insets(30, 2, 2, 2),
+                0, 0));
+    }
+
+    @Override
+    public void getLabel() {
+        JLabel label = new JLabel();
+        label.setBackground(new Color(0x6333DD));
+        label.setText("СД");
+
+        jPanelFourWindow.add(label, new GridBagConstraints(6, 4, 1, 1, 0.0, 0.9,
                 GridBagConstraints.CENTER, GridBagConstraints.HORIZONTAL, new Insets(30, 2, 2, 2),
                 0, 0));
     }

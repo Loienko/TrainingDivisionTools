@@ -9,7 +9,7 @@ import java.awt.*;
 import static net.ukr.dreamsicle.Window.jPanelFourWindow;
 import static net.ukr.dreamsicle.staticData.StaticData.*;
 
-public class FirstCourseOneGroup {
+public class FirstCourseOneGroup implements LabelClass {
 
 
     static ExistsFile existsFile = new ExistsFile();
@@ -17,6 +17,7 @@ public class FirstCourseOneGroup {
     public FirstCourseOneGroup() {
         getLabel();
 
+        getFirstGroup();
         getFirstOneGroup();
         getFirstTwoGroup();
         getFirstThreeGroup();
@@ -24,13 +25,23 @@ public class FirstCourseOneGroup {
         getFirstFiveGroup();
     }
 
-    private void getLabel() {
-        JLabel label = new JLabel();
-        label.setBackground(new Color(122, 45, 255));
-        label.setForeground(new Color(255, 21, 0));
-        label.setText(".........");
+    private void getFirstGroup() {
+        firstOneGroup = new JButton("группа 211");
 
-//        firstOneGroupOne.addActionListener(e -> OpenLocalFile.openLocalFile("C://Training_division_tools//info//Семестровый_план.xlsx"));
+        firstOneGroup.addActionListener(e -> {
+            JFrameListCadets jFrameListCadets = new JFrameListCadets();
+            jFrameListCadets.getJFrameListCadets("211");
+        });
+
+        jPanelFourWindow.add(firstOneGroup, new GridBagConstraints(0, 1, 1, 1, 0.0, 0.9,
+                GridBagConstraints.CENTER, GridBagConstraints.HORIZONTAL, new Insets(30, 2, 2, 2),
+                0, 0));
+    }
+
+    public void getLabel() {
+        JLabel label = new JLabel();
+        label.setBackground(new Color(0x6333DD));
+        label.setText("СД");
 
         jPanelFourWindow.add(label, new GridBagConstraints(6, 1, 1, 1, 0.0, 0.9,
                 GridBagConstraints.CENTER, GridBagConstraints.HORIZONTAL, new Insets(30, 2, 2, 2),

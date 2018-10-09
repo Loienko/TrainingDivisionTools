@@ -6,23 +6,35 @@ import javax.swing.*;
 import java.awt.*;
 
 import static net.ukr.dreamsicle.Window.jPanelFourWindow;
-import static net.ukr.dreamsicle.courseOne.FirstCourseOneGroup.existsFile;
 import static net.ukr.dreamsicle.staticData.StaticData.*;
 
-public class FirstCourseThirdGroup {
+public class FirstCourseThirdGroup  implements LabelClass{
 
     public FirstCourseThirdGroup() {
+        getThirdGroup();
         getThirdOneGroup();
         getThirdTwoGroup();
         getThirdThreeGroup();
         getThirdFourGroup();
         getThirdFiveGroup();
+        getLabel();
+    }
+
+    private void getThirdGroup() {
+        firstThreeGroup = new JButton("группа 213");
+
+        firstThreeGroup.addActionListener(e -> {
+            JFrameListCadets jFrameListCadets = new JFrameListCadets();
+            jFrameListCadets.getJFrameListCadets("213");
+        });
+        jPanelFourWindow.add(firstThreeGroup, new GridBagConstraints(0, 3, 1, 1, 0.0, 0.9,
+                GridBagConstraints.CENTER, GridBagConstraints.HORIZONTAL, new Insets(30, 2, 2, 2),
+                0, 0));
     }
 
     private void getThirdOneGroup() {
         firstThreeGroupOne = new JButton("группа 213/1");
 
-        existsFile.getExistsFile(firstThreeGroupOne, "C:\\Training_division_tools\\2018_год_поступления\\list_cadets\\213.1.txt");
         firstThreeGroupOne.addActionListener(e -> {
             JFrameListCadets jFrameListCadets = new JFrameListCadets();
             jFrameListCadets.getJFrameListCadets("213.1");
@@ -35,7 +47,6 @@ public class FirstCourseThirdGroup {
     private void getThirdTwoGroup() {
         firstThreeGroupTwo = new JButton("группа 213/2");
 
-        existsFile.getExistsFile(firstThreeGroupTwo, "C:\\Training_division_tools\\2018_год_поступления\\list_cadets\\213.2.txt");
         firstThreeGroupTwo.addActionListener(e -> {
             JFrameListCadets jFrameListCadets = new JFrameListCadets();
             jFrameListCadets.getJFrameListCadets("213.2");
@@ -48,7 +59,6 @@ public class FirstCourseThirdGroup {
     private void getThirdThreeGroup() {
         firstThreeGroupThird = new JButton("группа 213/3");
 
-        existsFile.getExistsFile(firstThreeGroupThird, "C:\\Training_division_tools\\2018_год_поступления\\list_cadets\\213.3.txt");
         firstThreeGroupThird.addActionListener(e -> {
             JFrameListCadets jFrameListCadets = new JFrameListCadets();
             jFrameListCadets.getJFrameListCadets("213.3");
@@ -61,7 +71,6 @@ public class FirstCourseThirdGroup {
     private void getThirdFourGroup() {
         firstThreeGroupFour = new JButton("группа 213/4");
 
-        existsFile.getExistsFile(firstThreeGroupFour, "C:\\Training_division_tools\\2018_год_поступления\\list_cadets\\213.4.txt");
         firstThreeGroupFour.addActionListener(e -> {
             JFrameListCadets jFrameListCadets = new JFrameListCadets();
             jFrameListCadets.getJFrameListCadets("213.4");
@@ -74,12 +83,22 @@ public class FirstCourseThirdGroup {
     private void getThirdFiveGroup() {
         firstThreeGroupFive = new JButton("группа 213/5");
 
-        existsFile.getExistsFile(firstThreeGroupFive, "C:\\Training_division_tools\\2018_год_поступления\\list_cadets\\213.5.txt");
         firstThreeGroupFive.addActionListener(e -> {
             JFrameListCadets jFrameListCadets = new JFrameListCadets();
             jFrameListCadets.getJFrameListCadets("213.5");
         });
         jPanelFourWindow.add(firstThreeGroupFive, new GridBagConstraints(5, 3, 1, 1, 0.0, 0.9,
+                GridBagConstraints.CENTER, GridBagConstraints.HORIZONTAL, new Insets(30, 2, 2, 2),
+                0, 0));
+    }
+
+    @Override
+    public void getLabel() {
+        JLabel label = new JLabel();
+        label.setBackground(new Color(0x6333DD));
+        label.setText("СД");
+
+        jPanelFourWindow.add(label, new GridBagConstraints(6, 3, 1, 1, 0.0, 0.9,
                 GridBagConstraints.CENTER, GridBagConstraints.HORIZONTAL, new Insets(30, 2, 2, 2),
                 0, 0));
     }

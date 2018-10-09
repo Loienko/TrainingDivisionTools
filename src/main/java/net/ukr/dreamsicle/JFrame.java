@@ -12,14 +12,16 @@ import static net.ukr.dreamsicle.Window.*;
 public class JFrame {
 
     public static Toolkit toolkit = Toolkit.getDefaultToolkit();
-    public static int WIDTH_WINDOW = 800;
-    public static int HEIGHT_WINDOW = 600;
+    public static int WIDTH_WINDOW = 1000;
+    public static int HEIGHT_WINDOW = 700;
 
     public static javax.swing.JFrame getJFrame() {
         javax.swing.JFrame jFrame = new javax.swing.JFrame();
         jFrame.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
 
         ImagePanel imagePanel = new ImagePanel();
+
+        jFrame.setLayout(null);
 
         jFrame.setContentPane(imagePanel);
 

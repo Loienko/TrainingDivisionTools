@@ -31,10 +31,10 @@ public class SortingCadetsByGroups {
     }
 
     private synchronized void readFromExcelSortedCadetsWriteToExcel(String file) {
-        try {
-            FileInputStream inputStream = new FileInputStream(new File(file));
-            //инициализация листа для доступа к файлу
-            XSSFWorkbook workbook = new XSSFWorkbook(inputStream);
+        //инициализация листа для доступа к файлу
+        try (FileInputStream inputStream = new FileInputStream(new File(file));
+             XSSFWorkbook workbook = new XSSFWorkbook(inputStream)) {
+
             //инициализация листа под номером
             XSSFSheet sheet = workbook.getSheetAt(0);
             //проходимся по всем строкам
@@ -171,10 +171,6 @@ public class SortingCadetsByGroups {
                 break;
             default:
                 readAndWriteData(cellIterator, cell, builder, "C:\\Training_division_tools\\2018_год_поступления\\list_cadets\\garbage.txt");
-
-                            /*JOptionPane.showMessageDialog(null, "Возникла проблема при сортировке!!! " +
-                                    "Перезапустите программу и попробуйте произвести действия еще раз!!! " +
-                                    "При возникновении повторной ошибки, обратитесь к разработчику ПО.");*/
                 break;
         }
     }
@@ -185,6 +181,7 @@ public class SortingCadetsByGroups {
             Cell cells = cellIterator.next();
             builder.append(cells.getStringCellValue()).append("\t\t");
         }
+
         new WriteFile(pathFile, builder.toString());
     }
 }
