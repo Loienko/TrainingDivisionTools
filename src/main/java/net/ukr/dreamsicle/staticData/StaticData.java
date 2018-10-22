@@ -46,6 +46,6 @@ public class StaticData {
     public static JButton firstSixGroupFour;
     public static JButton firstSixGroupFive;
 
-    public static String path = "C:\\Training_division_tools\\2018_год_поступления\\list_cadets\\";
+    public static String pathListCadets = "C:\\Training_division_tools\\2018_год_поступления\\list_cadets\\";
 
 }

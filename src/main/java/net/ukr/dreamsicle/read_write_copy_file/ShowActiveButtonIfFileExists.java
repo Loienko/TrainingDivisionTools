@@ -4,8 +4,14 @@ import javax.swing.*;
 import java.awt.*;
 import java.io.File;
 
-public class ExistsFile {
-    public void getExistsFile(JButton jButton, String path) {
+public class ShowActiveButtonIfFileExists {
+    /**
+     * Show Active Button If File Exists
+     *
+     * @param jButton
+     * @param path
+     */
+    public void getShowActiveButtonIfFileExists(JButton jButton, String path) {
         File files = new File(path);
         if (files.exists()) {
             jButton.setEnabled(true);

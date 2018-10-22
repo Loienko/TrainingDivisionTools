@@ -1,5 +1,6 @@
 package net.ukr.dreamsicle.courseOne;
 
+import net.ukr.dreamsicle.interfacePackage.LabelClass;
 import net.ukr.dreamsicle.listCadet.JFrameListCadets;
 
 import javax.swing.*;
@@ -8,7 +9,7 @@ import java.awt.*;
 import static net.ukr.dreamsicle.Window.jPanelFourWindow;
 import static net.ukr.dreamsicle.staticData.StaticData.*;
 
-public class FirstCourseSecondGroup  implements LabelClass{
+public class FirstCourseSecondGroup  implements LabelClass {
 
     public FirstCourseSecondGroup() {
         getSecondGroup();

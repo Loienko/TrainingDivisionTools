@@ -1,6 +1,8 @@
 package net.ukr.dreamsicle.listCadet;
 
-import net.ukr.dreamsicle.read_write_copy_file.ReadFile;
+import net.ukr.dreamsicle.logger.Logger;
+import net.ukr.dreamsicle.read_write_copy_file.ReadFileLineByLine;
+import org.junit.Test;
 
 import javax.swing.*;
 import javax.swing.table.TableModel;
@@ -9,6 +11,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 
 public class JFrameListCadets {
+    @Test
     public static void main(String[] args) {
         JFrameListCadets jFrameListCadets = new JFrameListCadets();
         jFrameListCadets.getJFrameListCadets("211.1");
@@ -24,7 +27,7 @@ public class JFrameListCadets {
             UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
             SwingUtilities.updateComponentTreeUI(jPanel);
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException e) {
-            e.printStackTrace();
+            Logger.log(e, "Exception to set Look and Feel");
         }
 
         jFrame.setTitle("Список курсантов");
@@ -38,7 +41,7 @@ public class JFrameListCadets {
 
         ArrayList beans = new ArrayList<>();
 
-        ReadFile readFile = new ReadFile();
+        ReadFileLineByLine readFile = new ReadFileLineByLine();
         readFile.getLinesFromFile(filePaths, beans);
 
         beans.sort(Comparator.comparing(Users::getSurname));

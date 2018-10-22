@@ -1,4 +1,4 @@
-package net.ukr.dreamsicle.courseOne;
+package net.ukr.dreamsicle.interfacePackage;
 
 public interface LabelClass {
     void getLabel();

@@ -2,18 +2,20 @@ package net.ukr.dreamsicle.mainWindows;
 
 import net.ukr.dreamsicle.ResourceLoader;
 import net.ukr.dreamsicle.dataBase.UpdateDBCommonTable;
+import net.ukr.dreamsicle.schedule.Schedule;
 import net.ukr.dreamsicle.showActiveButton.ShowActiveButtonGroup;
 
 import javax.swing.*;
 import java.awt.*;
 
 import static net.ukr.dreamsicle.Window.*;
-import static net.ukr.dreamsicle.read_write_copy_file.OpenLocalFile.openLocalFile;
+import static net.ukr.dreamsicle.read_write_copy_file.OpenLocalFileWithDifferentFormats.getOpenLocalFileWithDifferentFormats;
 
 
-public class TwoMainWindow {
+public class TwoMainWindow implements Runnable {
 
     public static JLabel jLabel;
+
 
     public static void getTwoMainWindow() {
         jPanelTwoWindow.setLayout(new GridBagLayout());
@@ -30,6 +32,9 @@ public class TwoMainWindow {
         jPanelTwoWindow.updateUI();
     }
 
+    /**
+     * back to main window
+     */
     public static void getBack() {
         JButton back = new JButton("Назад");
         back.setIcon(new ImageIcon(ResourceLoader.getImage("/image/undo.png")));
@@ -45,6 +50,9 @@ public class TwoMainWindow {
                 0, 0));
     }
 
+    /**
+     * only inform label
+     */
     private static void getLabel() {
         jLabel = new JLabel();
         jLabel.setIcon(new ImageIcon(ResourceLoader.getImage("/image/about.png")));
@@ -55,29 +63,69 @@ public class TwoMainWindow {
                 0, 0));
     }
 
+    /**
+     * Input all cadets data
+     */
     private static void getCommonTable() {
-        JButton commonTable = new JButton("Общая таблица");
+        JToggleButton commonTable = new JToggleButton("Общая таблица");
         commonTable.setIcon(new ImageIcon(ResourceLoader.getImage("/image/forButton/infoAboutCadets.png")));
-        commonTable.addActionListener(e -> openLocalFile("C://Training_division_tools//2018_год_поступления//1_курс//commonTable.xlsx"));
-        UpdateDBCommonTable updateDBCommonTable = new UpdateDBCommonTable();
+//        Thread thread = new Thread();
+        commonTable.addActionListener(e -> {
+            getOpenLocalFileWithDifferentFormats("C://Training_division_tools//2018_год_поступления//1_курс//commonTable.xlsx");
+//            thread.start();
+
+
+            commonTable.setSelected(false);
+            if (!commonTable.isSelected()) {
+                UpdateDBCommonTable updateDBCommonTable = new UpdateDBCommonTable();
+                updateDBCommonTable.getUpdateDBCommonTable();
+            }
+        });
+
 
         jPanelTwoWindow.add(commonTable, new GridBagConstraints(4, 2, 4, 1, 0.0, 0.9,
                 GridBagConstraints.CENTER, GridBagConstraints.HORIZONTAL, new Insets(30, 2, 2, 2),
                 0, 0));
     }
 
+    /**
+     * Schedule session
+     */
     private static void getScheduleSession() {
-        JButton scheduleSession = new JButton("Ведомость сессия");
-        scheduleSession.setEnabled(false);
+        JToggleButton scheduleSession = new JToggleButton("Ведомость сессия");
+//        scheduleSession.setEnabled(false);
         scheduleSession.setIcon(new ImageIcon(ResourceLoader.getImage("/image/forButton/scheduleSession.png")));
 
-        scheduleSession.addActionListener(e -> openLocalFile("C://Training_division_tools//2018_год_поступления//1_курс//statement.xlsx"));
+        scheduleSession.addActionListener(e -> {
+            if (scheduleSession.isSelected()) {
+                /*jPanelMainWindow.setVisible(false);
+                jPanelTwoWindow.setVisible(false);
+                jPanelThreeWindow.setVisible(false);
+                jPanelFourWindow.setVisible(false);
+                jPanelFiveWindowArchive.setVisible(false);
+                jPanelScheduleSession.setVisible(true);*/
+
+
+
+                Schedule schedule = new Schedule();
+                schedule.getWindowSchedule();
+
+
+                jPanelFourWindow.updateUI();
+                jFrame.revalidate();
+
+                scheduleSession.setSelected(false);
+            }
+        });
 
         jPanelTwoWindow.add(scheduleSession, new GridBagConstraints(1, 5, 3, 1, 0.0, 0.9,
                 GridBagConstraints.CENTER, GridBagConstraints.HORIZONTAL, new Insets(30, 2, 2, 2),
                 0, 0));
     }
 
+    /**
+     * test method
+     */
     private static void getTest() {
         /*
         another data
@@ -107,6 +155,9 @@ public class TwoMainWindow {
                 0, 0));
     }
 
+    /**
+     * List group
+     */
     private static void getGroup() {
         JToggleButton group = new JToggleButton("Список групп");
         group.setIcon(new ImageIcon(ResourceLoader.getImage("/image/forButton/info.png")));
@@ -117,6 +168,7 @@ public class TwoMainWindow {
                 jPanelThreeWindow.setVisible(false);
                 jPanelFourWindow.setVisible(true);
                 jPanelFiveWindowArchive.setVisible(false);
+                jPanelScheduleSession.setVisible(false);
 
                 ShowActiveButtonGroup showActiveButtonGroup = new ShowActiveButtonGroup();
                 showActiveButtonGroup.getShowActiveButtonGroupCadets();
@@ -133,18 +185,24 @@ public class TwoMainWindow {
                 0, 0));
     }
 
+    /**
+     * rating cadets for course
+     */
     private static void getRating() {
         JButton rating = new JButton("Рейтинг курсантов");
         rating.setEnabled(false);
         rating.setIcon(new ImageIcon(ResourceLoader.getImage("/image/forButton/raiting.png")));
 
-        rating.addActionListener(e -> openLocalFile("C://Training_division_tools//2018_год_поступления//1_курс//rating.xlsx"));
+        rating.addActionListener(e -> getOpenLocalFileWithDifferentFormats("C://Training_division_tools//2018_год_поступления//1_курс//rating.xlsx"));
 
         jPanelTwoWindow.add(rating, new GridBagConstraints(8, 5, 3, 1, 0.0, 0.9,
                 GridBagConstraints.CENTER, GridBagConstraints.HORIZONTAL, new Insets(30, 2, 2, 2),
                 0, 0));
     }
 
+    /**
+     * Additional Information for the general table
+     */
     private static void getAddInfo() {
         JToggleButton addInfo = new JToggleButton("Дополнительная информация");
         addInfo.setIcon(new ImageIcon(ResourceLoader.getImage("/image/forButton/about.png")));
@@ -155,6 +213,8 @@ public class TwoMainWindow {
                 jPanelThreeWindow.setVisible(true);
                 jPanelFourWindow.setVisible(false);
                 jPanelFiveWindowArchive.setVisible(false);
+                jPanelScheduleSession.setVisible(false);
+
                 addInfo.setSelected(false);
             }
         });
@@ -162,5 +222,10 @@ public class TwoMainWindow {
         jPanelTwoWindow.add(addInfo, new GridBagConstraints(4, 9, 4, 1, 0.0, 0.9,
                 GridBagConstraints.CENTER, GridBagConstraints.HORIZONTAL, new Insets(30, 2, 2, 2),
                 0, 0));
+    }
+
+    @Override
+    public void run() {
+
     }
 }

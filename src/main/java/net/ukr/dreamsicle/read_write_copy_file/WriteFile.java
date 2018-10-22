@@ -21,18 +21,22 @@ public class WriteFile {
 
     }
 
+    /**
+     * write data to file
+     *
+     * @param filePath
+     * @param text
+     * @throws IOException
+     */
     // обновляем файл с помощью BufferedWriter
     private void writeToFile(String filePath, String text) {
-        File file = new File(filePath);
-
-        try (FileWriter fr = new FileWriter(file, true);
-             BufferedWriter br = new BufferedWriter(fr)
+        try (BufferedWriter br = new BufferedWriter(new FileWriter(new File(filePath), true))
         ) {
             //теперь мы можем использовать метод write или метод append
             br.write(text);
             br.newLine();
         } catch (IOException e) {
-            Logger.log(e, "Не возмножно записать данные в файл");
+            Logger.log(e, "Can`t write data to file. Problem I/O");
         }
     }
 }

@@ -1,15 +1,31 @@
 package net.ukr.dreamsicle.dataBase;
 
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.junit.Test;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Iterator;
+
+import static net.ukr.dreamsicle.dataBase.Configs.TABLE_NAME;
 
 public class CreateDBCommonTable {
-    ArrayList<String> list = new ArrayList<>();
+    static ArrayList<String> list = new ArrayList<>();
 
-    public CreateDBCommonTable() {
+    /**
+     * static add data to array
+     * need to change this action
+     */
+    static {
         list.add("id");
-        list.add("group");
+        list.add("groupCadet");
         list.add("rank");
         list.add("surname");
         list.add("name");
@@ -17,6 +33,7 @@ public class CreateDBCommonTable {
         list.add("faculty");
         list.add("date");
         list.add("endSchoolPlace");
+        list.add("endSchoolYear");
         list.add("wedding");
         list.add("livePlace");
         list.add("birthdayPlace");
@@ -41,47 +58,102 @@ public class CreateDBCommonTable {
     @Test
     public static void main(String[] args) {
         CreateDBCommonTable createDBCommonTable = new CreateDBCommonTable();
-        String commonTable = createDBCommonTable.getCreateDBCommonTable();
-        String insertNameField = createDBCommonTable.getInsertNameField();
-        String insertQuestionMarkField = createDBCommonTable.getInsertQuestionMarkField();
-
+        String commonTable = createDBCommonTable.getInsertNameField();
         System.out.println(commonTable);
-        System.out.println(insertNameField);
-        System.out.println(insertQuestionMarkField);
+//        createDBCommonTable.readFromExcelToWriteDB("D:\\test\\tets.xlsx");
+//        String s = createDBCommonTable.readFromExcelToWriteDB("C:\\Training_division_tools\\2018_год_поступления\\1_курс\\commonTable.xlsx");
+//        System.out.println(s);
+
     }
 
+
+    /**
+     * Create column name for DB 'commonTable'
+     *
+     * @return String
+     */
     protected String getCreateDBCommonTable() {
-        StringBuilder builder = new StringBuilder(list.size());
+        StringBuilder builder = new StringBuilder();
 
+        String s = list.get(0);
+        builder.append(s).append(" INT NOT NULL AUTO_INCREMENT, ");
 
-        builder.append(list.get(0) + " INT NOT NULL AUTO_INCREMENT PRIMARY KEY, ");
         for (int i = 1; i < list.size(); i++) {
-            builder.append(list.get(i) + " VARCHAR(80), ");
+            String getArrayData = list.get(i);
+            builder.append(getArrayData + " VARCHAR(80), ");
         }
-        builder.deleteCharAt(builder.lastIndexOf(", "));
 
+        builder.append("PRIMARY KEY(" + s + ")");
         return builder.toString();
     }
 
+    /**
+     * Create input param and count column for DB 'commonTable'
+     *
+     * @return
+     */
     protected String getInsertQuestionMarkField() {
-        StringBuilder builder = new StringBuilder(list.size() - 1);
-
+        StringBuilder builder = new StringBuilder();
         for (int i = 1; i < list.size(); i++) {
             builder.append("?, ");
         }
         builder.deleteCharAt(builder.lastIndexOf(", "));
-
         return builder.toString();
     }
 
+    /**
+     * Create name column for INSERT data to DB 'columnTable'
+     *
+     * @return
+     */
     protected String getInsertNameField() {
-        StringBuilder builder = new StringBuilder(list.size() - 1);
+        StringBuilder builder = new StringBuilder();
 
         for (int i = 1; i < list.size(); i++) {
-            builder.append(list.get(i) + ", ");
+            String s = list.get(i);
+            builder.append(s + ", ");
         }
         builder.deleteCharAt(builder.lastIndexOf(", "));
-
         return builder.toString();
+    }
+
+    /**
+     * read data from Excel file and write to DB
+     *
+     * @param path
+     */
+    protected synchronized void readFromExcelToWriteDB(String path, PreparedStatement preparedStatement) {
+        try (FileInputStream inputStream = new FileInputStream(new File(path));
+             XSSFWorkbook workbook = new XSSFWorkbook(inputStream)) {
+
+            XSSFSheet sheet = workbook.getSheetAt(0);
+            Iterator<Row> rowIterator = sheet.iterator();
+
+            while (rowIterator.hasNext()) {
+                Row row = rowIterator.next();
+
+                Iterator<Cell> cellIterator = row.cellIterator();
+                String stringCellValue = "";
+                for (int j = 1; j < list.size(); j++) {
+                    try {
+                        Cell cell = cellIterator.next();
+                        stringCellValue = cell.getStringCellValue();
+                    } catch (Exception e) {
+                        stringCellValue = e.getLocalizedMessage();
+                        continue;
+                    }
+                    preparedStatement.setString(j, stringCellValue);
+                }
+                preparedStatement.executeUpdate();
+            }
+
+            preparedStatement.execute("DELETE FROM " + TABLE_NAME + " WHERE id = 1");
+            preparedStatement.executeUpdate();
+            /*for (int i = 1; i < 300; i++) {
+
+            }*/
+        } catch (IOException | SQLException e) {
+            e.printStackTrace();
+        }
     }
 }

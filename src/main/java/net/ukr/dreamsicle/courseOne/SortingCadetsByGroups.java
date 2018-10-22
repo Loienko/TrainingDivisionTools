@@ -10,11 +10,20 @@ import org.junit.Test;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Date;
 import java.util.Iterator;
+import java.util.TreeSet;
 
 public class SortingCadetsByGroups {
 
+    public static TreeSet<String> treeSet = new TreeSet<>();
+
+    /**
+     * call method
+     * @param file
+     */
     public SortingCadetsByGroups(String file) {
         readFromExcelSortedCadetsWriteToExcel(file);
     }
@@ -24,12 +33,24 @@ public class SortingCadetsByGroups {
         long start = new Date().getTime();
         System.out.println("go ->");
         new SortingCadetsByGroups("C:\\Training_division_tools\\2018_год_поступления\\1_курс\\commonTable.xlsx");
+//        new SortingCadetsByGroups("D:\\test\\tets.xlsx");
         long end = new Date().getTime();
         System.out.println();
         long l = (end - start) / 1000;
         System.out.println(l + " сек");
+
+        for (String s : treeSet) {
+            System.out.println(s);
+        }
     }
 
+    /**
+     * read from excel file and sorted cadets
+     *
+     * @param file
+     * @throws FileNotFoundException
+     * @throws IOException
+     */
     private synchronized void readFromExcelSortedCadetsWriteToExcel(String file) {
         //инициализация листа для доступа к файлу
         try (FileInputStream inputStream = new FileInputStream(new File(file));
@@ -49,15 +70,27 @@ public class SortingCadetsByGroups {
                 for (int i = 0; i < 1; i++) {
                     Cell cell = cellIterator.next();
                     String stringCellValue = cell.getStringCellValue();
+                    if (!stringCellValue.equals("Група")) {
+                        treeSet.add(stringCellValue);
+                    }
 
                     getSortedCadets(cellIterator, cell, stringCellValue);
                 }
             }
-        } catch (Exception e) {
-            Logger.log(e, "Не возможно произвести сортировку");
+
+//            treeSet.remove(treeSet.contains("Група"));
+        } catch (IOException e) {
+            Logger.log(e, "Problem to open or found Excel file");
         }
     }
 
+    /**
+     * sorting data to another file for parameters
+     *
+     * @param cellIterator
+     * @param cell
+     * @param stringCellValue
+     */
     private void getSortedCadets(Iterator<Cell> cellIterator, Cell cell, String stringCellValue) {
         StringBuilder builder = new StringBuilder();
         switch (stringCellValue) {
@@ -175,6 +208,14 @@ public class SortingCadetsByGroups {
         }
     }
 
+    /**
+     * read data from excel file! Add data to builder and write to sorting cadets files
+     *
+     * @param cellIterator
+     * @param cell
+     * @param builder
+     * @param pathFile
+     */
     private void readAndWriteData(Iterator<Cell> cellIterator, Cell cell, StringBuilder builder, String pathFile) {
         builder.append(cell + "\t\t");
         for (int j = 0; j < 3; j++) {

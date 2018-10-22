@@ -1,7 +1,7 @@
 package net.ukr.dreamsicle.mainWindows;
 
 import net.ukr.dreamsicle.ResourceLoader;
-import net.ukr.dreamsicle.read_write_copy_file.OpenLocalFile;
+import net.ukr.dreamsicle.read_write_copy_file.OpenLocalFileWithDifferentFormats;
 
 import javax.swing.*;
 import java.awt.*;
@@ -43,6 +43,7 @@ public class ThreeMainWindow {
             jPanelThreeWindow.setVisible(false);
             jPanelFourWindow.setVisible(false);
             jPanelFiveWindowArchive.setVisible(false);
+            jPanelScheduleSession.setVisible(false);
         });
 
         jPanelThreeWindow.add(back, new GridBagConstraints(8, 0, 4, 1, 0.0, 0.9,
@@ -55,7 +56,7 @@ public class ThreeMainWindow {
 
         semesterPlan.setIcon(new ImageIcon(ResourceLoader.getImage("/image/forButton/plan.png")));
 
-        semesterPlan.addActionListener(e -> OpenLocalFile.openLocalFile("C://Training_division_tools//info//Семестровый_план.xlsx"));
+        semesterPlan.addActionListener(e -> OpenLocalFileWithDifferentFormats.getOpenLocalFileWithDifferentFormats("C://Training_division_tools//info//Семестровый_план.xlsx"));
 
         jPanelThreeWindow.add(semesterPlan, new GridBagConstraints(0, 1, 4, 1, 0.0, 0.9,
                 GridBagConstraints.CENTER, GridBagConstraints.HORIZONTAL, new Insets(30, 2, 2, 2),
@@ -67,7 +68,7 @@ public class ThreeMainWindow {
 
         familyStatus.setIcon(new ImageIcon(ResourceLoader.getImage("/image/forButton/wedding.png")));
 
-        familyStatus.addActionListener(e -> OpenLocalFile.openLocalFile("C://Training_division_tools//info//Семейное_положение.xlsx"));
+        familyStatus.addActionListener(e -> OpenLocalFileWithDifferentFormats.getOpenLocalFileWithDifferentFormats("C://Training_division_tools//info//Семейное_положение.xlsx"));
 
         jPanelThreeWindow.add(familyStatus, new GridBagConstraints(4, 1, 4, 1, 0.0, 0.9,
                 GridBagConstraints.CENTER, GridBagConstraints.HORIZONTAL, new Insets(30, 2, 2, 2),
@@ -78,7 +79,7 @@ public class ThreeMainWindow {
         JButton years = new JButton("Вступление вне конкурса");
 
         years.setIcon(new ImageIcon(ResourceLoader.getImage("/image/forButton/addmission.png")));
-        years.addActionListener(e -> OpenLocalFile.openLocalFile("C://Training_division_tools//info//Вступление_вне_конкурса.xlsx"));
+        years.addActionListener(e -> OpenLocalFileWithDifferentFormats.getOpenLocalFileWithDifferentFormats("C://Training_division_tools//info//Вступление_вне_конкурса.xlsx"));
 
         jPanelThreeWindow.add(years, new GridBagConstraints(8, 1, 4, 1, 0.0, 0.9,
                 GridBagConstraints.CENTER, GridBagConstraints.HORIZONTAL, new Insets(30, 2, 2, 2),
@@ -90,7 +91,7 @@ public class ThreeMainWindow {
 
         reasonsForDeductions.setIcon(new ImageIcon(ResourceLoader.getImage("/image/forButton/deduction.png")));
 
-        reasonsForDeductions.addActionListener(e -> OpenLocalFile.openLocalFile("C://Training_division_tools//info//Причины_отчисления.xlsx"));
+        reasonsForDeductions.addActionListener(e -> OpenLocalFileWithDifferentFormats.getOpenLocalFileWithDifferentFormats("C://Training_division_tools//info//Причины_отчисления.xlsx"));
 
         jPanelThreeWindow.add(reasonsForDeductions, new GridBagConstraints(0, 2, 4, 1, 0.0, 0.9,
                 GridBagConstraints.CENTER, GridBagConstraints.HORIZONTAL, new Insets(30, 2, 2, 2),
@@ -102,7 +103,7 @@ public class ThreeMainWindow {
 
         pilingsUponAccession.setIcon(new ImageIcon(ResourceLoader.getImage("/image/forButton/pilings.png")));
 
-        pilingsUponAccession.addActionListener(e -> OpenLocalFile.openLocalFile("C://Training_division_tools//info//Пильгы_при_вступлении.xlsx"));
+        pilingsUponAccession.addActionListener(e -> OpenLocalFileWithDifferentFormats.getOpenLocalFileWithDifferentFormats("C://Training_division_tools//info//Пильгы_при_вступлении.xlsx"));
 
         jPanelThreeWindow.add(pilingsUponAccession, new GridBagConstraints(4, 2, 4, 1, 0.0, 0.9,
                 GridBagConstraints.CENTER, GridBagConstraints.HORIZONTAL, new Insets(30, 2, 2, 2),
@@ -114,7 +115,7 @@ public class ThreeMainWindow {
 
         directionOfTraining.setIcon(new ImageIcon(ResourceLoader.getImage("/image/forButton/direction.png")));
 
-        directionOfTraining.addActionListener(e -> OpenLocalFile.openLocalFile("C://Training_division_tools//info//Направление_подготовки.xlsx"));
+        directionOfTraining.addActionListener(e -> OpenLocalFileWithDifferentFormats.getOpenLocalFileWithDifferentFormats("C://Training_division_tools//info//Направление_подготовки.xlsx"));
 
         jPanelThreeWindow.add(directionOfTraining, new GridBagConstraints(8, 2, 4, 1, 0.0, 0.9,
                 GridBagConstraints.CENTER, GridBagConstraints.HORIZONTAL, new Insets(30, 2, 2, 2),
@@ -126,7 +127,7 @@ public class ThreeMainWindow {
 
         orderOfAdmission.setIcon(new ImageIcon(ResourceLoader.getImage("/image/forButton/order.png")));
 
-        orderOfAdmission.addActionListener(e -> OpenLocalFile.openLocalFile("C://Training_division_tools//info//Приказ_о_зачислении.xlsx"));
+        orderOfAdmission.addActionListener(e -> OpenLocalFileWithDifferentFormats.getOpenLocalFileWithDifferentFormats("C://Training_division_tools//info//Приказ_о_зачислении.xlsx"));
 
         jPanelThreeWindow.add(orderOfAdmission, new GridBagConstraints(0, 3, 4, 1, 0.0, 0.9,
                 GridBagConstraints.CENTER, GridBagConstraints.HORIZONTAL, new Insets(30, 2, 2, 2),
@@ -138,7 +139,7 @@ public class ThreeMainWindow {
 
         academicDisciplines.setIcon(new ImageIcon(ResourceLoader.getImage("/image/forButton/academic.png")));
 
-        academicDisciplines.addActionListener(e -> OpenLocalFile.openLocalFile("C://Training_division_tools//info//Учебные_дисциплины.xlsx"));
+        academicDisciplines.addActionListener(e -> OpenLocalFileWithDifferentFormats.getOpenLocalFileWithDifferentFormats("C://Training_division_tools//info//Учебные_дисциплины.xlsx"));
 
         jPanelThreeWindow.add(academicDisciplines, new GridBagConstraints(4, 3, 4, 1, 0.0, 0.9,
                 GridBagConstraints.CENTER, GridBagConstraints.HORIZONTAL, new Insets(30, 2, 2, 2),
@@ -150,7 +151,7 @@ public class ThreeMainWindow {
 
         militaryRank.setIcon(new ImageIcon(ResourceLoader.getImage("/image/forButton/rank.png")));
 
-        militaryRank.addActionListener(e -> OpenLocalFile.openLocalFile("C://Training_division_tools//info//Воинское_звание.xlsx"));
+        militaryRank.addActionListener(e -> OpenLocalFileWithDifferentFormats.getOpenLocalFileWithDifferentFormats("C://Training_division_tools//info//Воинское_звание.xlsx"));
 
         jPanelThreeWindow.add(militaryRank, new GridBagConstraints(8, 3, 4, 1, 0.0, 0.9,
                 GridBagConstraints.CENTER, GridBagConstraints.HORIZONTAL, new Insets(30, 2, 2, 2),
@@ -162,7 +163,7 @@ public class ThreeMainWindow {
 
         specialization.setIcon(new ImageIcon(ResourceLoader.getImage("/image/forButton/engineer.png")));
 
-        specialization.addActionListener(e -> OpenLocalFile.openLocalFile("C://Training_division_tools//info//Специализация.xlsx"));
+        specialization.addActionListener(e -> OpenLocalFileWithDifferentFormats.getOpenLocalFileWithDifferentFormats("C://Training_division_tools//info//Специализация.xlsx"));
 
         jPanelThreeWindow.add(specialization, new GridBagConstraints(0, 4, 4, 1, 0.0, 0.9,
                 GridBagConstraints.CENTER, GridBagConstraints.HORIZONTAL, new Insets(30, 2, 2, 2),
@@ -174,7 +175,7 @@ public class ThreeMainWindow {
 
         specialty.setIcon(new ImageIcon(ResourceLoader.getImage("/image/forButton/specialty.png")));
 
-        specialty.addActionListener(e -> OpenLocalFile.openLocalFile("C://Training_division_tools//info//Специальность.xlsx"));
+        specialty.addActionListener(e -> OpenLocalFileWithDifferentFormats.getOpenLocalFileWithDifferentFormats("C://Training_division_tools//info//Специальность.xlsx"));
 
         jPanelThreeWindow.add(specialty, new GridBagConstraints(4, 4, 4, 1, 0.0, 0.9,
                 GridBagConstraints.CENTER, GridBagConstraints.HORIZONTAL, new Insets(30, 2, 2, 2),
@@ -187,7 +188,7 @@ public class ThreeMainWindow {
 
         faculty.setIcon(new ImageIcon(ResourceLoader.getImage("/image/forButton/faculty.png")));
 
-        faculty.addActionListener(e -> OpenLocalFile.openLocalFile("C://Training_division_tools//info//Факультет.xlsx"));
+        faculty.addActionListener(e -> OpenLocalFileWithDifferentFormats.getOpenLocalFileWithDifferentFormats("C://Training_division_tools//info//Факультет.xlsx"));
 
         jPanelThreeWindow.add(faculty, new GridBagConstraints(8, 4, 4, 1, 0.0, 0.9,
                 GridBagConstraints.CENTER, GridBagConstraints.HORIZONTAL, new Insets(30, 2, 2, 2),
@@ -199,7 +200,7 @@ public class ThreeMainWindow {
 
         semesterControlForm.setIcon(new ImageIcon(ResourceLoader.getImage("/image/forButton/exam.png")));
 
-        semesterControlForm.addActionListener(e -> OpenLocalFile.openLocalFile("C://Training_division_tools//info//Форма_семестрового_контроля.xlsx"));
+        semesterControlForm.addActionListener(e -> OpenLocalFileWithDifferentFormats.getOpenLocalFileWithDifferentFormats("C://Training_division_tools//info//Форма_семестрового_контроля.xlsx"));
 
         jPanelThreeWindow.add(semesterControlForm, new GridBagConstraints(0, 5, 4, 1, 0.0, 0.9,
                 GridBagConstraints.CENTER, GridBagConstraints.HORIZONTAL, new Insets(30, 2, 2, 2),
@@ -211,7 +212,7 @@ public class ThreeMainWindow {
 
         statements.setIcon(new ImageIcon(ResourceLoader.getImage("/image/forButton/statement.png")));
 
-        statements.addActionListener(e -> OpenLocalFile.openLocalFile("C://Training_division_tools//info//Ведомости.xlsx"));
+        statements.addActionListener(e -> OpenLocalFileWithDifferentFormats.getOpenLocalFileWithDifferentFormats("C://Training_division_tools//info//Ведомости.xlsx"));
 
         jPanelThreeWindow.add(statements, new GridBagConstraints(4, 5, 4, 1, 0.0, 0.9,
                 GridBagConstraints.CENTER, GridBagConstraints.HORIZONTAL, new Insets(30, 2, 2, 2),
@@ -223,7 +224,7 @@ public class ThreeMainWindow {
 
         balls.setIcon(new ImageIcon(ResourceLoader.getImage("/image/forButton/balls.png")));
 
-        balls.addActionListener(e -> OpenLocalFile.openLocalFile("C://Training_division_tools//info//Бали.xlsx"));
+        balls.addActionListener(e -> OpenLocalFileWithDifferentFormats.getOpenLocalFileWithDifferentFormats("C://Training_division_tools//info//Бали.xlsx"));
 
         jPanelThreeWindow.add(balls, new GridBagConstraints(8, 5, 4, 1, 0.0, 0.9,
                 GridBagConstraints.CENTER, GridBagConstraints.HORIZONTAL, new Insets(30, 2, 2, 2),

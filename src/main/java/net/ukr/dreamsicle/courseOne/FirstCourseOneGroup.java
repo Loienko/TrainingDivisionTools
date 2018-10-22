@@ -1,7 +1,8 @@
 package net.ukr.dreamsicle.courseOne;
 
+import net.ukr.dreamsicle.interfacePackage.LabelClass;
 import net.ukr.dreamsicle.listCadet.JFrameListCadets;
-import net.ukr.dreamsicle.read_write_copy_file.ExistsFile;
+import net.ukr.dreamsicle.read_write_copy_file.ShowActiveButtonIfFileExists;
 
 import javax.swing.*;
 import java.awt.*;
@@ -12,7 +13,7 @@ import static net.ukr.dreamsicle.staticData.StaticData.*;
 public class FirstCourseOneGroup implements LabelClass {
 
 
-    static ExistsFile existsFile = new ExistsFile();
+    static ShowActiveButtonIfFileExists showActiveButtonIfFileExists = new ShowActiveButtonIfFileExists();
 
     public FirstCourseOneGroup() {
         getLabel();
@@ -79,8 +80,8 @@ public class FirstCourseOneGroup implements LabelClass {
     private void getFirstThreeGroup() {
         firstOneGroupThird = new JButton("группа 211/3");
 
-        existsFile.getExistsFile(firstOneGroupThird, "C:\\Training_division_tools\\2018_год_поступления\\list_cadets\\211.3.txt");
-//        thirdGroup.addActionListener(e -> OpenLocalFile.openLocalFile("C://Training_division_tools//info//Год.xlsx"));
+        showActiveButtonIfFileExists.getShowActiveButtonIfFileExists(firstOneGroupThird, "C:\\Training_division_tools\\2018_год_поступления\\list_cadets\\211.3.txt");
+//        thirdGroup.addActionListener(e -> OpenLocalFileWithDifferentFormats.openLocalFile("C://Training_division_tools//info//Год.xlsx"));
 
         firstOneGroupThird.addActionListener(e -> {
             JFrameListCadets jFrameListCadets = new JFrameListCadets();
@@ -94,13 +95,13 @@ public class FirstCourseOneGroup implements LabelClass {
     private void getFirstFourGroup() {
         firstOneGroupFour = new JButton("группа 211/4");
 
-        existsFile.getExistsFile(firstOneGroupFour, "C:\\Training_division_tools\\2018_год_поступления\\list_cadets\\211.4.txt");
+        showActiveButtonIfFileExists.getShowActiveButtonIfFileExists(firstOneGroupFour, "C:\\Training_division_tools\\2018_год_поступления\\list_cadets\\211.4.txt");
 
         firstOneGroupFour.addActionListener(e -> {
             JFrameListCadets jFrameListCadets = new JFrameListCadets();
             jFrameListCadets.getJFrameListCadets("211.4");
         });
-//        thirdGroup.addActionListener(e -> OpenLocalFile.openLocalFile("C://Training_division_tools//info//Год.xlsx"));
+//        thirdGroup.addActionListener(e -> OpenLocalFileWithDifferentFormats.openLocalFile("C://Training_division_tools//info//Год.xlsx"));
 
         jPanelFourWindow.add(firstOneGroupFour, new GridBagConstraints(4, 1, 1, 1, 0.0, 0.9,
                 GridBagConstraints.CENTER, GridBagConstraints.HORIZONTAL, new Insets(30, 2, 2, 2),
@@ -110,8 +111,8 @@ public class FirstCourseOneGroup implements LabelClass {
     private void getFirstFiveGroup() {
         firstOneGroupFive = new JButton("группа 211/5");
 
-        existsFile.getExistsFile(firstOneGroupFive, "C:\\Training_division_tools\\2018_год_поступления\\list_cadets\\211.5.txt");
-//        thirdGroup.addActionListener(e -> OpenLocalFile.openLocalFile("C://Training_division_tools//info//Год.xlsx"));
+        showActiveButtonIfFileExists.getShowActiveButtonIfFileExists(firstOneGroupFive, "C:\\Training_division_tools\\2018_год_поступления\\list_cadets\\211.5.txt");
+//        thirdGroup.addActionListener(e -> OpenLocalFileWithDifferentFormats.openLocalFile("C://Training_division_tools//info//Год.xlsx"));
 
         firstOneGroupFive.addActionListener(e -> {
             JFrameListCadets jFrameListCadets = new JFrameListCadets();

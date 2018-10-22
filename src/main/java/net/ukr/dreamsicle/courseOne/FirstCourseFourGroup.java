@@ -1,5 +1,6 @@
 package net.ukr.dreamsicle.courseOne;
 
+import net.ukr.dreamsicle.interfacePackage.LabelClass;
 import net.ukr.dreamsicle.listCadet.JFrameListCadets;
 
 import javax.swing.*;

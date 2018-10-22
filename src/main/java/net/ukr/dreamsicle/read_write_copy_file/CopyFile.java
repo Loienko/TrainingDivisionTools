@@ -8,6 +8,12 @@ import java.io.IOException;
 
 public class CopyFile {
 
+    /**
+     * copy file
+     *
+     * @param copyFirstInputFile
+     * @param copySecondOutputFile
+     */
     public static void getCopyFile(String copyFirstInputFile, String copySecondOutputFile) {
         try (FileInputStream inputStream = new FileInputStream(copyFirstInputFile)) {
 //            File directory = new File("src/res/folder");

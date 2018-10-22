@@ -1,9 +1,11 @@
 package net.ukr.dreamsicle;
 
+import net.ukr.dreamsicle.archive.Archive;
+import net.ukr.dreamsicle.mainWindows.NotUseScheduleSessionWindow;
+
 import javax.swing.*;
 
 import static net.ukr.dreamsicle.JFrame.getJFrame;
-import static net.ukr.dreamsicle.archive.Archive.getArchive;
 import static net.ukr.dreamsicle.lookAndFeel.LookAndFeel.setLookAndFeel;
 import static net.ukr.dreamsicle.mainWindows.FourMainWindowListCadetsGroup.getFourMainListWindow;
 import static net.ukr.dreamsicle.mainWindows.MainWindow.getMainWindow;
@@ -18,15 +20,22 @@ public class Window {
     public static JPanel jPanelThreeWindow = new JPanel();
     public static JPanel jPanelFourWindow = new JPanel();
     public static JPanel jPanelFiveWindowArchive = new JPanel();
+    public static JPanel jPanelScheduleSession = new JPanel();
     public static javax.swing.JFrame jFrame = getJFrame();
     public static JMenuBar jMenuBar = getMenuBar();
 
+    Archive archive = new Archive();
+    NotUseScheduleSessionWindow notUseScheduleSessionWindow = new NotUseScheduleSessionWindow();
+
     public Window() {
+
+
         jFrame.add(jPanelMainWindow);
         jFrame.add(jPanelTwoWindow);
         jFrame.add(jPanelThreeWindow);
         jFrame.add(jPanelFourWindow);
         jFrame.add(jPanelFiveWindowArchive);
+        jFrame.add(jPanelScheduleSession);
 
         setLookAndFeel();
 
@@ -35,13 +44,15 @@ public class Window {
         getTwoMainWindow();
         getThreeMainWindow();
         getFourMainListWindow();
-        getArchive();
+        archive.getArchive();
+        notUseScheduleSessionWindow.getScheduleSession();
 
         jPanelMainWindow.setVisible(true);
         jPanelTwoWindow.setVisible(false);
         jPanelThreeWindow.setVisible(false);
         jPanelFourWindow.setVisible(false);
         jPanelFiveWindowArchive.setVisible(false);
+        jPanelScheduleSession.setVisible(false);
 
 
         jPanelMainWindow.revalidate();
@@ -54,6 +65,8 @@ public class Window {
         jPanelFourWindow.updateUI();
         jPanelFiveWindowArchive.revalidate();
         jPanelFiveWindowArchive.updateUI();
+        jPanelScheduleSession.revalidate();
+        jPanelScheduleSession.updateUI();
         jFrame.revalidate();
     }
 }

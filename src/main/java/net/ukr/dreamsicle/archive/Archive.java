@@ -7,7 +7,7 @@ import static net.ukr.dreamsicle.Window.*;
 
 public class Archive {
 
-    public static void getArchive() {
+    public void getArchive() {
         jPanelFiveWindowArchive.setLayout(new GridBagLayout());
 
         getBackMainWindow();

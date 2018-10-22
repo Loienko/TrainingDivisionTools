@@ -1,4 +1,4 @@
-package net.ukr.dreamsicle.dataBase;
+package net.ukr.dreamsicle.dataBase.jdbcTest;
 
 import net.ukr.dreamsicle.logger.Logger;
 import org.junit.Test;

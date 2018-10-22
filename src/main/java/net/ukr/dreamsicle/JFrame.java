@@ -22,6 +22,7 @@ public class JFrame {
         ImagePanel imagePanel = new ImagePanel();
 
         jFrame.setLayout(null);
+        jFrame.setIconImage(ResourceLoader.getImage("/image/folder.png"));
 
         jFrame.setContentPane(imagePanel);
 
@@ -30,21 +31,23 @@ public class JFrame {
         imagePanel.add(jPanelThreeWindow);
         imagePanel.add(jPanelFourWindow);
         imagePanel.add(jPanelFiveWindowArchive);
+        imagePanel.add(jPanelScheduleSession);
 
 
         Dimension dimension = toolkit.getScreenSize();
         jFrame.setBounds(dimension.width / 2 - (WIDTH_WINDOW / 2), dimension.height / 2 - (HEIGHT_WINDOW / 2),
                 WIDTH_WINDOW, HEIGHT_WINDOW);
 
-
         jPanelMainWindow.setOpaque(false);
         jPanelTwoWindow.setOpaque(false);
         jPanelThreeWindow.setOpaque(false);
         jPanelFourWindow.setOpaque(false);
         jPanelFiveWindowArchive.setOpaque(false);
+        jPanelScheduleSession.setOpaque(false);
 
         jFrame.setTitle("Office Tools");
         jFrame.setVisible(true);
+
 
         jFrame.addWindowListener(new WindowAdapter() {
             @Override

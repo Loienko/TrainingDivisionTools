@@ -7,6 +7,7 @@ import net.ukr.dreamsicle.logger.Logger;
 
 import javax.swing.*;
 import java.awt.*;
+import java.lang.reflect.InvocationTargetException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -52,9 +53,11 @@ public class MainWindow {
             try {
                 connection.getConnectionDB();
             } catch (ClassNotFoundException | SQLException e1) {
-                e1.printStackTrace();
+//                e1.printStackTrace();
                 Logger.log(e1, "No connect from DB");
                 JOptionPane.showMessageDialog(null, "Нет соединения с БД", "", JOptionPane.WARNING_MESSAGE);
+            } catch (NoSuchMethodException | InstantiationException | InvocationTargetException | IllegalAccessException e1) {
+                e1.printStackTrace();
             }
             dataBase.setSelected(false);
         });

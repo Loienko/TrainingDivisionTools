@@ -3,6 +3,7 @@ package net.ukr.dreamsicle.mainWindows;
 import net.ukr.dreamsicle.ResourceLoader;
 import net.ukr.dreamsicle.courseOne.*;
 import net.ukr.dreamsicle.date.TimeRightNow;
+import net.ukr.dreamsicle.interfacePackage.Back;
 import net.ukr.dreamsicle.removeFiles.RemoveAllFilesInFolder;
 import net.ukr.dreamsicle.showActiveButton.ShowActiveButtonGroup;
 
@@ -12,13 +13,16 @@ import java.awt.*;
 import static net.ukr.dreamsicle.Window.*;
 import static net.ukr.dreamsicle.date.TimeRightNow.getYearDate;
 
-public class FourMainWindowListCadetsGroup {
+public class FourMainWindowListCadetsGroup implements Back {
 
-//    static ExistsFile existsFile = new ExistsFile();
+//    static ShowActiveButtonIfFileExists existsFile = new ShowActiveButtonIfFileExists();
+
+    /**
+     * need to delete static method and use OOP
+     */
 
     public static void getFourMainListWindow() {
         jPanelFourWindow.setLayout(new GridBagLayout());
-
 
         getBackTwoWindows();
 
@@ -58,6 +62,7 @@ public class FourMainWindowListCadetsGroup {
         new FirstCourseSixGroup();
     }
 
+
     public static void getBackTwoWindows() {
         JButton back = new JButton("Назад");
         back.setIcon(new ImageIcon(ResourceLoader.getImage("/image/undo.png")));
@@ -68,6 +73,7 @@ public class FourMainWindowListCadetsGroup {
             jPanelTwoWindow.setVisible(true);
             jPanelThreeWindow.setVisible(false);
             jPanelFourWindow.setVisible(false);
+            jPanelScheduleSession.setVisible(false);
             jPanelFiveWindowArchive.setVisible(false);
 
             back.setSelected(false);
@@ -78,6 +84,9 @@ public class FourMainWindowListCadetsGroup {
                 0, 0));
     }
 
+    /**
+     * Update list cadets use read file 'commonTable' and sorting cadets
+     */
     public static void getUpdateList() {
         JToggleButton update = new JToggleButton("Обновить списки");
         update.setIcon(new ImageIcon(ResourceLoader.getImage("/image/forButton/update.png")));
@@ -101,6 +110,14 @@ public class FourMainWindowListCadetsGroup {
         jPanelFourWindow.add(update, new GridBagConstraints(3, 0, 1, 1, 0.0, 0.9,
                 GridBagConstraints.CENTER, GridBagConstraints.HORIZONTAL, new Insets(30, 2, 2, 2),
                 0, 0));
+
+    }
+
+    /**
+     * Back to previous window
+     */
+    @Override
+    public void getBack() {
 
     }
 }

@@ -1,15 +1,15 @@
 package net.ukr.dreamsicle.courseOne;
 
+import net.ukr.dreamsicle.interfacePackage.LabelClass;
 import net.ukr.dreamsicle.listCadet.JFrameListCadets;
 
 import javax.swing.*;
 import java.awt.*;
 
 import static net.ukr.dreamsicle.Window.jPanelFourWindow;
-import static net.ukr.dreamsicle.courseOne.FirstCourseOneGroup.existsFile;
 import static net.ukr.dreamsicle.staticData.StaticData.*;
 
-public class FirstCourseFiveGroup  implements LabelClass{
+public class FirstCourseFiveGroup  implements LabelClass {
 
     public FirstCourseFiveGroup() {
         getFiveGroup();
