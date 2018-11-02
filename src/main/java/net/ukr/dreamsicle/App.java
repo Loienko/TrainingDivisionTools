@@ -5,7 +5,8 @@ import javax.swing.*;
 public class App {
     /**
      * Офисная программа для университета Воздушных Сил "ХНУПС"
-     *  Данные курсантов и их успеваемость
+     * Данные курсантов и их успеваемость
+     *
      * @author Loienko Yurii
      * @author https://www.linkedin.com/in/yurii-loienko-78705393/
      * @version 4.0

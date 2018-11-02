@@ -56,4 +56,8 @@ public class LookAndFeel {
 
 
     }
+
+    public void getLookAndFeelInputNumber(int n) {
+        getLookAndFeel(n);
+    }
 }

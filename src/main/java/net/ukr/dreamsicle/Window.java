@@ -29,7 +29,6 @@ public class Window {
 
     public Window() {
 
-
         jFrame.add(jPanelMainWindow);
         jFrame.add(jPanelTwoWindow);
         jFrame.add(jPanelThreeWindow);
@@ -53,7 +52,6 @@ public class Window {
         jPanelFourWindow.setVisible(false);
         jPanelFiveWindowArchive.setVisible(false);
         jPanelScheduleSession.setVisible(false);
-
 
         jPanelMainWindow.revalidate();
         jPanelMainWindow.updateUI();

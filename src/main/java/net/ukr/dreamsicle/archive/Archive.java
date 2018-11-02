@@ -13,7 +13,7 @@ public class Archive {
         getBackMainWindow();
     }
 
-    public static void getBackMainWindow() {
+    public void getBackMainWindow() {
         JToggleButton back = new JToggleButton("Назад");
 
         back.addActionListener(e -> {

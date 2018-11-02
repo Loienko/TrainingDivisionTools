@@ -1,14 +1,16 @@
 package net.ukr.dreamsicle.mainWindows;
 
 import net.ukr.dreamsicle.ResourceLoader;
+import net.ukr.dreamsicle.interfacePackage.Back;
 import net.ukr.dreamsicle.read_write_copy_file.OpenLocalFileWithDifferentFormats;
+import net.ukr.dreamsicle.schedule.updateWriteCreateTableToDB.WriteFileToDB;
 
 import javax.swing.*;
 import java.awt.*;
 
 import static net.ukr.dreamsicle.Window.*;
 
-public class ThreeMainWindow {
+public class ThreeMainWindow implements Back {
 
     public static void getThreeMainWindow() {
         jPanelThreeWindow.setLayout(new GridBagLayout());
@@ -28,7 +30,9 @@ public class ThreeMainWindow {
         getSpecialty();
         getFaculty();
         getSemesterControlForm();
+
         getBackTwoWindow();
+
 
         jPanelThreeWindow.updateUI();
     }
@@ -44,6 +48,17 @@ public class ThreeMainWindow {
             jPanelFourWindow.setVisible(false);
             jPanelFiveWindowArchive.setVisible(false);
             jPanelScheduleSession.setVisible(false);
+
+            Thread thread = new Thread(() -> {
+                WriteFileToDB writeFileToDB = new WriteFileToDB();
+                writeFileToDB.getWriteDataDisciplineToDB();
+            });
+            thread.start();
+            thread.isInterrupted();
+
+            back.setSelected(false);
+
+
         });
 
         jPanelThreeWindow.add(back, new GridBagConstraints(8, 0, 4, 1, 0.0, 0.9,
@@ -144,6 +159,7 @@ public class ThreeMainWindow {
         jPanelThreeWindow.add(academicDisciplines, new GridBagConstraints(4, 3, 4, 1, 0.0, 0.9,
                 GridBagConstraints.CENTER, GridBagConstraints.HORIZONTAL, new Insets(30, 2, 2, 2),
                 0, 0));
+        academicDisciplines.setSelected(false);
     }
 
     private static void getMilitaryRank() {
@@ -230,4 +246,10 @@ public class ThreeMainWindow {
                 GridBagConstraints.CENTER, GridBagConstraints.HORIZONTAL, new Insets(30, 2, 2, 2),
                 0, 0));
     }
+
+    @Override
+    public void getBack() {
+
+    }
+
 }

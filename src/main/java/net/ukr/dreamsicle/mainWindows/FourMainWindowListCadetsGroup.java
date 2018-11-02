@@ -13,7 +13,7 @@ import java.awt.*;
 import static net.ukr.dreamsicle.Window.*;
 import static net.ukr.dreamsicle.date.TimeRightNow.getYearDate;
 
-public class FourMainWindowListCadetsGroup implements Back {
+public class FourMainWindowListCadetsGroup implements Back, Runnable {
 
 //    static ShowActiveButtonIfFileExists existsFile = new ShowActiveButtonIfFileExists();
 
@@ -76,6 +76,7 @@ public class FourMainWindowListCadetsGroup implements Back {
             jPanelScheduleSession.setVisible(false);
             jPanelFiveWindowArchive.setVisible(false);
 
+
             back.setSelected(false);
         });
 
@@ -119,5 +120,10 @@ public class FourMainWindowListCadetsGroup implements Back {
     @Override
     public void getBack() {
 
+    }
+
+    @Override
+    public void run() {
+        System.out.println("start ->");
     }
 }

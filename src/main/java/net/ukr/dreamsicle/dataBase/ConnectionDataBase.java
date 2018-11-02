@@ -8,8 +8,8 @@ import java.sql.*;
 import static net.ukr.dreamsicle.dataBase.Configs.*;
 
 public class ConnectionDataBase {
+    public static Connection connection;
     private static CreateDBCommonTable createDBCommonTable = new CreateDBCommonTable();
-    private static Connection connection;
 
     /**
      * Connect to DB
@@ -27,6 +27,7 @@ public class ConnectionDataBase {
         Class.forName(DB_DRIVER).getDeclaredConstructor().newInstance();
 
         connection = DriverManager.getConnection(connectionDB, DB_USERNAME, DB_PASSWORD);
+//        connection.setAutoCommit(true);
 //        connection = DriverManager.getConnection(connectionDB, DB_USERNAME, DB_PASSWORD_WORK);
         if (!connection.isClosed()) {
             System.out.println("Connection successful");
@@ -47,7 +48,7 @@ public class ConnectionDataBase {
             statement.execute("CREATE TABLE IF NOT EXISTS " + TABLE_NAME + "(" + commonTable + ")");
 
         } catch (SQLException e) {
-            Logger.log(e, "Problem to create DB");
+            Logger.log(e, "Problem to create DB 'common table'");
         }
     }
 

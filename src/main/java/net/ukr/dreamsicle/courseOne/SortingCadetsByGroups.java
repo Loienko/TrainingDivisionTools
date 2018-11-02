@@ -18,10 +18,11 @@ import java.util.TreeSet;
 
 public class SortingCadetsByGroups {
 
-    public static TreeSet<String> treeSet = new TreeSet<>();
+    private static TreeSet<String> treeSet = new TreeSet<>();
 
     /**
      * call method
+     *
      * @param file
      */
     public SortingCadetsByGroups(String file) {

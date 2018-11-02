@@ -1,7 +1,9 @@
 package net.ukr.dreamsicle.mainWindows;
 
 import net.ukr.dreamsicle.ResourceLoader;
+import net.ukr.dreamsicle.dataBase.ConnectionDataBase;
 import net.ukr.dreamsicle.dataBase.UpdateDBCommonTable;
+import net.ukr.dreamsicle.schedule.updateWriteCreateTableToDB.CreateTableToDB;
 import net.ukr.dreamsicle.schedule.Schedule;
 import net.ukr.dreamsicle.showActiveButton.ShowActiveButtonGroup;
 
@@ -15,7 +17,7 @@ import static net.ukr.dreamsicle.read_write_copy_file.OpenLocalFileWithDifferent
 public class TwoMainWindow implements Runnable {
 
     public static JLabel jLabel;
-
+    static ConnectionDataBase connectionDataBase = new ConnectionDataBase();
 
     public static void getTwoMainWindow() {
         jPanelTwoWindow.setLayout(new GridBagLayout());
@@ -96,6 +98,7 @@ public class TwoMainWindow implements Runnable {
 //        scheduleSession.setEnabled(false);
         scheduleSession.setIcon(new ImageIcon(ResourceLoader.getImage("/image/forButton/scheduleSession.png")));
 
+
         scheduleSession.addActionListener(e -> {
             if (scheduleSession.isSelected()) {
                 /*jPanelMainWindow.setVisible(false);
@@ -106,7 +109,13 @@ public class TwoMainWindow implements Runnable {
                 jPanelScheduleSession.setVisible(true);*/
 
 
+                CreateTableToDB createTableToDB = new CreateTableToDB();
+                createTableToDB.getCreateTableGroup();
 
+
+                /**
+                 * change datBase access
+                 */
                 Schedule schedule = new Schedule();
                 schedule.getWindowSchedule();
 

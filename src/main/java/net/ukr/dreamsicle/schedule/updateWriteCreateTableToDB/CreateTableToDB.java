@@ -1,4 +1,4 @@
-package net.ukr.dreamsicle.schedule;
+package net.ukr.dreamsicle.schedule.updateWriteCreateTableToDB;
 
 import net.ukr.dreamsicle.dataBase.ConnectionDataBase;
 import net.ukr.dreamsicle.read_write_copy_file.ReadFileNameFromFolder;
@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 import static net.ukr.dreamsicle.dataBase.Configs.TABLE_NAME;
 import static net.ukr.dreamsicle.date.TimeRightNow.getYearDate;
-import static net.ukr.dreamsicle.staticData.StaticData.pathListCadets;
+import static net.ukr.dreamsicle.staticData.StaticData.PATH_LIST_CADETS;
 
 public class CreateTableToDB {
     private static ConnectionDataBase connectionDataBase = new ConnectionDataBase();
@@ -22,7 +22,7 @@ public class CreateTableToDB {
         createTableToDB.getCreateTableGroup();
     }
 
-    private void getCreateTableGroup() {
+    public void getCreateTableGroup() {
         try {
             connection = connectionDataBase.getConnectionDB();
             getCreateTable(connection);
@@ -34,12 +34,12 @@ public class CreateTableToDB {
 
     private void getCreateTable(Connection connection) {
         ReadFileNameFromFolder readFileNameFromFolder = new ReadFileNameFromFolder();
-        ArrayList<String> fileNameFromFolder = readFileNameFromFolder.getReadFileNameFromFolder(pathListCadets);
+        ArrayList<String> fileNameFromFolder = readFileNameFromFolder.getReadFileNameFromFolder(PATH_LIST_CADETS);
 
         try (Statement statement = connection.createStatement()) {
             for (String s : fileNameFromFolder) {
-                String nameTable = null;
-                String groupCadet = null;
+                String nameTable;
+                String groupCadet;
                 if (s.contains(".")) {
                     nameTable = s.replace(".", "drob") + "year" + getYearDate();
                     groupCadet = "'" + s.replace(".", "/") + "'";
@@ -50,11 +50,8 @@ public class CreateTableToDB {
 
                 statement.execute("CREATE TABLE IF NOT EXISTS " + nameTable + " AS SELECT surname FROM " + TABLE_NAME
                         + " WHERE groupCadet = " + groupCadet);
-
                 try {
-                    if (statement.execute("SELECT grade FROM " + nameTable)) {
-                        continue;
-                    } else {
+                    if (!statement.execute("SELECT grade FROM " + nameTable)) {
                         statement.execute("ALTER TABLE " + nameTable + " ADD COLUMN grade INT, ADD dateEkzamen VARCHAR(60), ADD numberVedomosti VARCHAR(60)");
                     }
                 } catch (Exception e) {

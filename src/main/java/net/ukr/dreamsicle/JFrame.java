@@ -17,7 +17,7 @@ public class JFrame {
 
     public static javax.swing.JFrame getJFrame() {
         javax.swing.JFrame jFrame = new javax.swing.JFrame();
-        jFrame.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
+        jFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
         ImagePanel imagePanel = new ImagePanel();
 
@@ -49,16 +49,20 @@ public class JFrame {
         jFrame.setVisible(true);
 
 
+        /**
+         * exit action
+         */
         jFrame.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
                 Object[] options = {"Да", "Нет!"};
                 int n = JOptionPane
-                        .showOptionDialog(e.getWindow(), "Закрыть окно?",
-                                "Подтверждение", JOptionPane.YES_NO_OPTION,
+                        .showOptionDialog(e.getWindow(), "Вы уверены?",
+                                "Office Tools", JOptionPane.YES_NO_OPTION,
                                 JOptionPane.QUESTION_MESSAGE, null, options,
                                 options[0]);
                 if (n == 0) {
+//                    JOptionPane.showMessageDialog(null,"achtung");
                     e.getWindow().setVisible(false);
                     System.exit(0);
                 }

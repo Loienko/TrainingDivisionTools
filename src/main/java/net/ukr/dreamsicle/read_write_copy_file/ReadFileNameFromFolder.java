@@ -3,12 +3,12 @@ package net.ukr.dreamsicle.read_write_copy_file;
 import java.io.File;
 import java.util.ArrayList;
 
-import static net.ukr.dreamsicle.staticData.StaticData.pathListCadets;
+import static net.ukr.dreamsicle.staticData.StaticData.PATH_LIST_CADETS;
 
 public class ReadFileNameFromFolder {
     public static void main(String[] args) {
         ReadFileNameFromFolder readFileNameFromFolder = new ReadFileNameFromFolder();
-        readFileNameFromFolder.getReadFileNameFromFolder(pathListCadets);
+        readFileNameFromFolder.getReadFileNameFromFolder(PATH_LIST_CADETS);
     }
 
     /**

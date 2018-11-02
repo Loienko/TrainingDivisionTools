@@ -27,7 +27,7 @@ public class JFrameListCadets {
             UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
             SwingUtilities.updateComponentTreeUI(jPanel);
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException e) {
-            Logger.log(e, "Exception to set Look and Feel");
+            Logger.log(e, "Error to set Look and Feel");
         }
 
         jFrame.setTitle("Список курсантов");

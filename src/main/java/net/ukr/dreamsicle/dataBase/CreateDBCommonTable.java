@@ -80,7 +80,7 @@ public class CreateDBCommonTable {
 
         for (int i = 1; i < list.size(); i++) {
             String getArrayData = list.get(i);
-            builder.append(getArrayData + " VARCHAR(80), ");
+            builder.append(getArrayData + " VARCHAR(200) NULL, ");
         }
 
         builder.append("PRIMARY KEY(" + s + ")");
@@ -149,9 +149,7 @@ public class CreateDBCommonTable {
 
             preparedStatement.execute("DELETE FROM " + TABLE_NAME + " WHERE id = 1");
             preparedStatement.executeUpdate();
-            /*for (int i = 1; i < 300; i++) {
 
-            }*/
         } catch (IOException | SQLException e) {
             e.printStackTrace();
         }
